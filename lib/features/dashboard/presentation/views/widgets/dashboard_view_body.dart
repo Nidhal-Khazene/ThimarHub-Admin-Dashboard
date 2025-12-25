@@ -15,6 +15,11 @@ class DashboardViewBody extends StatelessWidget {
             Navigator.pushNamed(context, AddProductView.routeName);
           },
           text: "Add Data",
+          textStyle: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
         ),
       ],
     );
