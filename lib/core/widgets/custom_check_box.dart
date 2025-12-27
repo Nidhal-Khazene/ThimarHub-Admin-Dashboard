@@ -22,7 +22,7 @@ class CustomCheckBox extends StatelessWidget {
         height: 24,
         duration: const Duration(milliseconds: 100),
         decoration: ShapeDecoration(
-          color: isChecked ? ColorsData.kPrimaryColor : Colors.white,
+          color: isChecked ? ColorsData.kLightPrimaryColor : Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
             side: BorderSide(
