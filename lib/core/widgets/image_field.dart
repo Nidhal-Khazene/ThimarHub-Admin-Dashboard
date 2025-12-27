@@ -1,10 +1,16 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ImageField extends StatelessWidget {
+class ImageField extends StatefulWidget {
   const ImageField({super.key});
 
+  @override
+  State<ImageField> createState() => _ImageFieldState();
+}
+
+class _ImageFieldState extends State<ImageField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,22 +20,30 @@ class ImageField extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         border: Border.all(width: 1, color: ColorsData.kBorderColor),
       ),
-      child: Center(
-        child: Column(
-          children: [
-            Icon(
-              Icons.image_rounded,
-              size: 180,
-              color: const Color(0xFFC9CECE),
-            ),
-            Text(
-              "Product Image",
-              style: AppStyles.regular16.copyWith(
-                color: const Color(0xFF949D9E),
+      child: GestureDetector(
+        onTap: () async {
+          final ImagePicker picker = ImagePicker();
+          final XFile? image = await picker.pickImage(
+            source: ImageSource.gallery,
+          );
+        },
+        child: Center(
+          child: Column(
+            children: [
+              Icon(
+                Icons.image_rounded,
+                size: 180,
+                color: const Color(0xFFC9CECE),
               ),
-            ),
-            SizedBox(height: 16),
-          ],
+              Text(
+                "Product Image",
+                style: AppStyles.regular16.copyWith(
+                  color: const Color(0xFF949D9E),
+                ),
+              ),
+              SizedBox(height: 16),
+            ],
+          ),
         ),
       ),
     );
