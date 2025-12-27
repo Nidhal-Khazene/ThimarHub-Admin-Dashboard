@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_app_dashboard/core/widgets/image_field.dart';
+import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
+import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/is_featured_field.dart';
 import 'package:flutter/material.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -12,6 +13,7 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               textInputType: TextInputType.text,
               maxLines: 5,
             ),
+            SizedBox(height: 16),
+            IsFeaturedField(onChanged: (value) {}),
             SizedBox(height: 16),
             ImageField(onFileChanged: (image) {}),
           ],
