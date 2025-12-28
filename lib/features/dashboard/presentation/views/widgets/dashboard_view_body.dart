@@ -15,7 +15,7 @@ class DashboardViewBody extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, AddProductView.routeName);
           },
-          text: "add product",
+          text: "product form",
           backgroundColor: ColorsData.kLightPrimaryColor,
           textStyle: TextStyle(
             fontSize: 22,
