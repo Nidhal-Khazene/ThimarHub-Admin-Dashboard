@@ -4,9 +4,11 @@ import 'package:ecommerce_app_dashboard/core/helper/show_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/add_product_input_entity.dart';
+import 'package:ecommerce_app_dashboard/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/is_featured_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});
@@ -82,13 +84,17 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 if (fileImage != null) {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    AddProductInputEntity input = AddProductInputEntity(
-                      productName: productName,
-                      productCode: productCode,
-                      productDescription: productDescription,
-                      productPrice: productPrice,
-                      fileImage: fileImage!,
-                      isFeatured: isFeatured,
+                    AddProductInputEntity addProductInputEntity =
+                        AddProductInputEntity(
+                          productName: productName,
+                          productCode: productCode,
+                          productDescription: productDescription,
+                          productPrice: productPrice,
+                          fileImage: fileImage!,
+                          isFeatured: isFeatured,
+                        );
+                    context.read<AddProductCubit>().addProduct(
+                      addProductInputEntity,
                     );
                   } else {
                     autoValidateMode = AutovalidateMode.always;
