@@ -17,7 +17,7 @@ class ImagesRepoImpl implements ImagesRepo {
         BackendBreakPoint.images,
       );
       return Right(url);
-    } on Exception catch (e) {
+    } on Exception catch (_) {
       return Left(ServerFailure(message: "Failed to upload image!"));
     }
   }

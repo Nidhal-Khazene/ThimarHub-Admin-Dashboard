@@ -1,5 +1,7 @@
 import 'package:ecommerce_app_dashboard/core/repositories/product_repo.dart';
 import 'package:ecommerce_app_dashboard/core/repositories/product_repo_impl.dart';
+import 'package:ecommerce_app_dashboard/core/services/database_service.dart';
+import 'package:ecommerce_app_dashboard/core/services/firestore_service.dart';
 import 'package:ecommerce_app_dashboard/core/services/storage_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -11,6 +13,10 @@ final getIt = GetIt.instance;
 
 void setupGetIt() {
   getIt.registerSingleton<StorageService>(FirebaseCloudStorage());
+  getIt.registerSingleton<DatabaseService>(FirestoreService());
+
   getIt.registerSingleton<ImagesRepo>(ImagesRepoImpl(getIt<StorageService>()));
-  getIt.registerSingleton<ProductRepo>(ProductRepoImpl());
+  getIt.registerSingleton<ProductRepo>(
+    ProductRepoImpl(databaseService: getIt<DatabaseService>()),
+  );
 }
