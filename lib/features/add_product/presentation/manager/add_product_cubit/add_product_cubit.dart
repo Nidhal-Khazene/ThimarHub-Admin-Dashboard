@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 part 'add_product_state.dart';
 
 class AddProductCubit extends Cubit<AddProductState> {
-  AddProductCubit(this.imagesRepo, this.productRepo)
+  AddProductCubit({required this.imagesRepo, required this.productRepo})
     : super(AddProductInitial());
 
   final ImagesRepo imagesRepo;
