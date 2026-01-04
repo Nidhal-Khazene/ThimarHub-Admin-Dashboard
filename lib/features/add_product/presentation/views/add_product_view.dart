@@ -3,7 +3,7 @@ import 'package:ecommerce_app_dashboard/core/repositories/images_repo.dart';
 import 'package:ecommerce_app_dashboard/core/repositories/product_repo.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/add_product_view_body.dart';
+import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/add_product_view_body_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +26,7 @@ class AddProductView extends StatelessWidget {
               imagesRepo: getIt<ImagesRepo>(),
               productRepo: getIt<ProductRepo>(),
             ),
-            child: AddProductViewBody(),
+            child: AddProductViewBodyBlocBuilder(),
           ),
         ),
       ),
