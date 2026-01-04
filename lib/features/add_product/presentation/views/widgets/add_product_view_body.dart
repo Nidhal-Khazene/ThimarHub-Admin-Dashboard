@@ -7,6 +7,7 @@ import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/add
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/is_featured_field.dart';
+import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/is_organic_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +25,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   late num productPrice;
   File? fileImage;
   bool isFeatured = false;
+  bool isOrganic = false;
+  late int expirationsMonth, numberOfCalories, unitAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +63,30 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             SizedBox(height: 16),
             CustomTextFormField(
               onSaved: (value) {
+                expirationsMonth = int.parse(value!);
+              },
+              hintText: "Expirations Month",
+              textInputType: TextInputType.number,
+            ),
+            SizedBox(height: 16),
+            CustomTextFormField(
+              onSaved: (value) {
+                numberOfCalories = int.parse(value!);
+              },
+              hintText: "Number Of Calories",
+              textInputType: TextInputType.number,
+            ),
+            SizedBox(height: 16),
+            CustomTextFormField(
+              onSaved: (value) {
+                unitAmount = int.parse(value!);
+              },
+              hintText: "Unit Amount",
+              textInputType: TextInputType.number,
+            ),
+            SizedBox(height: 16),
+            CustomTextFormField(
+              onSaved: (value) {
                 productDescription = value!;
               },
               hintText: "Product Description",
@@ -70,6 +97,12 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             IsFeaturedField(
               onChanged: (value) {
                 isFeatured = value;
+              },
+            ),
+            SizedBox(height: 16),
+            IsOrganicField(
+              onChanged: (value) {
+                isOrganic = value;
               },
             ),
             SizedBox(height: 16),
@@ -92,6 +125,10 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                           productPrice: productPrice,
                           fileImage: fileImage!,
                           isFeatured: isFeatured,
+                          isOrganic: isOrganic,
+                          unitAmount: unitAmount,
+                          numberOfCalories: numberOfCalories,
+                          expirationsMonth: expirationsMonth,
                         );
                     context.read<AddProductCubit>().addProduct(
                       addProductInputEntity,

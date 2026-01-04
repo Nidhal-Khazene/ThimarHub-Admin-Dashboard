@@ -12,7 +12,6 @@ class AddProductInputModel {
   final int numberOfCalories;
   final num avrRating;
   final num ratingCount;
-
   final int unitAmount;
 
   AddProductInputModel({
