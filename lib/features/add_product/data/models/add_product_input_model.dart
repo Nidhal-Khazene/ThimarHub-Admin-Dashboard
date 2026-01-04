@@ -6,9 +6,20 @@ class AddProductInputModel {
   final String productDescription;
   final num productPrice;
   final bool isFeatured;
-  final String? urlImage; // store URL only
+  final String? urlImage;
+  final int expirationsMonth;
+  final bool isOrganic;
+  final int numberOfCalories;
+  final num avrRating = 0;
+  final num ratingCount = 0;
+
+  final int unitAmount;
 
   AddProductInputModel({
+    required this.expirationsMonth,
+    required this.isOrganic,
+    required this.numberOfCalories,
+    required this.unitAmount,
     required this.productName,
     required this.productCode,
     required this.productDescription,
@@ -25,6 +36,10 @@ class AddProductInputModel {
       productPrice: entity.productPrice,
       isFeatured: entity.isFeatured,
       urlImage: entity.urlImage,
+      expirationsMonth: entity.expirationsMonth,
+      isOrganic: entity.isOrganic,
+      numberOfCalories: entity.numberOfCalories,
+      unitAmount: entity.unitAmount,
     );
   }
 
@@ -36,6 +51,10 @@ class AddProductInputModel {
       "productPrice": productPrice,
       "isFeatured": isFeatured,
       "urlImage": urlImage,
+      "expirationsMonth": expirationsMonth,
+      "isOrganic": isOrganic,
+      "numberOfCalories": numberOfCalories,
+      "unitAmount": unitAmount,
     };
   }
 }
