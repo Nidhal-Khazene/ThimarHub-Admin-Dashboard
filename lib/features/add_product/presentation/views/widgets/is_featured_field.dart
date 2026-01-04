@@ -6,6 +6,7 @@ import '../../../../../core/widgets/custom_check_box.dart';
 
 class IsFeaturedField extends StatefulWidget {
   const IsFeaturedField({super.key, required this.onChanged});
+
   final ValueChanged<bool> onChanged;
 
   @override
@@ -19,15 +20,6 @@ class _IsFeaturedFieldState extends State<IsFeaturedField> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomCheckBox(
-          isChecked: isFeatured,
-          onChecked: (bool value) {
-            isFeatured = value;
-            widget.onChanged(isFeatured);
-            setState(() {});
-          },
-        ),
-        const SizedBox(width: kSizedBoxHeight16),
         Expanded(
           child: Text.rich(
             TextSpan(
@@ -41,6 +33,15 @@ class _IsFeaturedFieldState extends State<IsFeaturedField> {
               ],
             ),
           ),
+        ),
+        const SizedBox(width: kSizedBoxHeight16),
+        CustomCheckBox(
+          isChecked: isFeatured,
+          onChecked: (bool value) {
+            isFeatured = value;
+            widget.onChanged(isFeatured);
+            setState(() {});
+          },
         ),
       ],
     );
