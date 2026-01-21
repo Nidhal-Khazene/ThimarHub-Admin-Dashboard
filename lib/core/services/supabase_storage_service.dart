@@ -11,10 +11,14 @@ import '../../config/api_keys.dart';
 class SupabaseStorageService implements StorageService {
   static late Supabase _supabase;
 
+  static createBucket({required String bucketName}) {
+    _supabase.client.storage.createBucket(bucketName);
+  }
+
   static initSupabase() async {
     _supabase = await Supabase.initialize(
       url: Urls.supabaseUrl,
-      anonKey: ApiKeys.kSupabaseApiKey,
+      anonKey: ApiKeys.kSupabaseApiSecretKey,
     );
   }
 
