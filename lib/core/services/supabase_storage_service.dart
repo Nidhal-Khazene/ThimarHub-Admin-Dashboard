@@ -11,8 +11,17 @@ import '../../config/api_keys.dart';
 class SupabaseStorageService implements StorageService {
   static late Supabase _supabase;
 
-  static createBucket({required String bucketName}) {
-    _supabase.client.storage.createBucket(bucketName);
+  static createBucket({required String bucketName}) async {
+    bool isBucketExist = false;
+    var buckets = await _supabase.client.storage.listBuckets();
+    for (var bucket in buckets) {
+      if (bucket.id == bucketName) {
+        isBucketExist = true;
+      }
+    }
+    if (!isBucketExist) {
+      _supabase.client.storage.createBucket(bucketName);
+    }
   }
 
   static initSupabase() async {
