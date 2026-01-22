@@ -15,8 +15,10 @@ class ProductModel {
   final num ratingCount;
   final int unitAmount;
   final List<ReviewModel> reviews;
+  final int sellingCount;
 
   ProductModel({
+    this.sellingCount = 0,
     required this.reviews,
     this.avrRating = 0,
     this.ratingCount = 0,
@@ -52,6 +54,7 @@ class ProductModel {
 
   Map<String, dynamic> toJson() {
     return {
+      "sellingCount": sellingCount,
       "productName": productName,
       "productCode": productCode,
       "productDescription": productDescription,
