@@ -11,7 +11,10 @@ class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "FruitHub Dashboard"),
+      appBar: buildAppBar(
+        title: "لوحة التحكم",
+        leadingIcon: Icons.arrow_back_ios,
+      ),
       body: SafeArea(
         child: Padding(
           padding: kPrimaryScreenPadding,

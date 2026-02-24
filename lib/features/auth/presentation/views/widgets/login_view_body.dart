@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -30,7 +31,12 @@ class LoginViewBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          CustomButton(text: "تسجيل دخول"),
+          CustomButton(
+            text: "تسجيل دخول",
+            onPressed: () {
+              Navigator.pushNamed(context, DashboardView.routeName);
+            },
+          ),
           SizedBox(height: 37),
           SizedBox(
             width: double.infinity,
