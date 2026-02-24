@@ -13,7 +13,10 @@ class DashboardView extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(
         title: "لوحة التحكم",
-        leadingIcon: Icons.arrow_back_ios,
+        leading: Padding(
+          padding: EdgeInsets.only(right: 16),
+          child: Icon(Icons.arrow_back_ios),
+        ),
       ),
       body: SafeArea(
         child: Padding(
