@@ -1,29 +1,43 @@
-import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
-import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/add_product_view.dart';
+import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/widgets/dashboard_item.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/assets.dart';
 
 class DashboardViewBody extends StatelessWidget {
   const DashboardViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CustomButton(
-          onPressed: () {
-            Navigator.pushNamed(context, AddProductView.routeName);
-          },
-          text: "product form",
-          backgroundColor: ColorsData.kLightPrimaryColor,
-          textStyle: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 74),
+          DashboardItem(
+            textContent: "ادارة  الاصناف والمنتجات ",
+            iconImage: Assets.imagesDashboardOpenCardboardBox,
+            iconImagePadding: 10,
           ),
-        ),
-      ],
+          SizedBox(height: 16),
+          DashboardItem(
+            textContent: "خدمة العملاء والطلبات ",
+            iconImage: Assets.imagesDashboardChecked,
+            iconImagePadding: 18,
+          ),
+          SizedBox(height: 16),
+          DashboardItem(
+            textContent: "ادارة الشحن والتفريغ ",
+            iconImage: Assets.imagesDashboardShippingCar,
+            iconImagePadding: 8,
+          ),
+          SizedBox(height: 16),
+          DashboardItem(
+            textContent: "ادراة المخازن والمنتجات ",
+            iconImage: Assets.imagesDashboardShippingChart,
+            iconImagePadding: 16,
+          ),
+          SizedBox(height: 16),
+        ],
+      ),
     );
   }
 }
