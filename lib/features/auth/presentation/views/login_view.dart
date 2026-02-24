@@ -13,6 +13,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Icon(Icons.arrow_forward_ios),
         title: const Text("تسجيل دخول "),
         centerTitle: true,
         backgroundColor: Colors.transparent,

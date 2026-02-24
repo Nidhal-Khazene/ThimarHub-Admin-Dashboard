@@ -1,0 +1,6 @@
+{
+  "welcome_user": "¡Bienvenido, {name}!",
+  "auth": {
+    "login": "Acceso"
+  }
+}
