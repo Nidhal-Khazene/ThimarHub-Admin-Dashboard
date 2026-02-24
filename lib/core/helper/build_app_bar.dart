@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../utils/app_styles.dart';
 import '../utils/colors_data.dart';
 
-AppBar buildAppBar({required String title, IconData? leadingIcon}) {
+AppBar buildAppBar({required String title, Widget? leading}) {
   return AppBar(
-    leading: Icon(leadingIcon),
+    leading: leading,
     title: Text(title),
     centerTitle: true,
     backgroundColor: Colors.transparent,
