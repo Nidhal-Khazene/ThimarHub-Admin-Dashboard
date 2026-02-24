@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import '../utils/app_styles.dart';
 import '../utils/colors_data.dart';
 
-AppBar buildAppBar({required title}) {
+AppBar buildAppBar({required String title}) {
   return AppBar(
-    iconTheme: IconThemeData(color: Colors.white),
-    backgroundColor: ColorsData.kLightPrimaryColor,
+    title: Text(title),
     centerTitle: true,
-    title: Text(title, style: AppStyles.bold19.copyWith(color: Colors.white)),
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    titleTextStyle: AppStyles.bold19.copyWith(
+      fontFamily: "Cairo",
+      color: ColorsData.kFontPrimaryColor,
+    ),
   );
 }
