@@ -7,10 +7,12 @@ class DashboardItem extends StatelessWidget {
     super.key,
     required this.textContent,
     required this.iconImage,
+    required this.iconImagePadding,
   });
 
   final String textContent;
   final String iconImage;
+  final double iconImagePadding;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class DashboardItem extends StatelessWidget {
         Container(
           width: 66,
           height: 66,
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(iconImagePadding),
           decoration: ShapeDecoration(
             color: const Color(0xFFEBF9F1),
             shape: OvalBorder(),
