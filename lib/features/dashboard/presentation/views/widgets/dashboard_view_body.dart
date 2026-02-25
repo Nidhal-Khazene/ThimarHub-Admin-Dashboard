@@ -17,25 +17,24 @@ class DashboardViewBody extends StatelessWidget {
             iconImage: Assets.imagesDashboardOpenCardboardBox,
             iconImagePadding: 10,
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 24),
           DashboardItem(
             textContent: "خدمة العملاء والطلبات ",
             iconImage: Assets.imagesDashboardChecked,
             iconImagePadding: 18,
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 24),
           DashboardItem(
             textContent: "ادارة الشحن والتفريغ ",
             iconImage: Assets.imagesDashboardShippingCar,
             iconImagePadding: 8,
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 24),
           DashboardItem(
             textContent: "ادراة المخازن والمنتجات ",
             iconImage: Assets.imagesDashboardShippingChart,
             iconImagePadding: 16,
           ),
-          SizedBox(height: 16),
         ],
       ),
     );
