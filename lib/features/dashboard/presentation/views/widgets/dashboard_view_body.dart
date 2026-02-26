@@ -2,6 +2,7 @@ import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/wi
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/assets.dart';
+import '../../../../products_management/presentation/views/products_management_view.dart';
 
 class DashboardViewBody extends StatelessWidget {
   const DashboardViewBody({super.key});
@@ -12,10 +13,15 @@ class DashboardViewBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 74),
-          DashboardItem(
-            textContent: "ادارة  الاصناف والمنتجات ",
-            iconImage: Assets.imagesDashboardOpenCardboardBox,
-            iconImagePadding: 10,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, ProductsManagementView.routeName);
+            },
+            child: DashboardItem(
+              textContent: "ادارة  الاصناف والمنتجات ",
+              iconImage: Assets.imagesDashboardOpenCardboardBox,
+              iconImagePadding: 10,
+            ),
           ),
           SizedBox(height: 24),
           DashboardItem(
