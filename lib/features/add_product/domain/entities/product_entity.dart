@@ -6,7 +6,7 @@ class ProductEntity {
   final String productName, productCode, productDescription;
   String? urlImage;
   final num productPrice;
-  final File fileImage;
+  final File? fileImage;
   final bool isFeatured;
   final int expirationsMonth;
   final bool isOrganic;
@@ -29,7 +29,7 @@ class ProductEntity {
     required this.productDescription,
     this.urlImage,
     required this.productPrice,
-    required this.fileImage,
+    this.fileImage,
     required this.isFeatured,
   });
 }

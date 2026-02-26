@@ -17,7 +17,7 @@ class AddProductCubit extends Cubit<AddProductState> {
     emit(AddProductLoading());
 
     final imageResult = await imagesRepo.uploadImage(
-      addProductInputEntity.fileImage,
+      addProductInputEntity.fileImage!,
     );
 
     await imageResult.fold(

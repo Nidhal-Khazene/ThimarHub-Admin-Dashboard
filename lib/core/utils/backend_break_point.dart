@@ -4,4 +4,5 @@ class BackendBreakPoint {
   static const getUserData = "users";
   static const checkIFUserExists = "users";
   static const productCollections = "products";
+  static const getProducts = "products";
 }

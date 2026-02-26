@@ -52,6 +52,45 @@ class ProductModel {
     );
   }
 
+  ProductEntity toEntity() {
+    return ProductEntity(
+      reviews: reviews.map((e) => e.toEntity()).toList(),
+      expirationsMonth: expirationsMonth,
+      isOrganic: isOrganic,
+      numberOfCalories: numberOfCalories,
+      unitAmount: unitAmount,
+      productName: productName,
+      productCode: productCode,
+      productDescription: productDescription,
+      productPrice: productPrice,
+      urlImage: urlImage,
+      isFeatured: isFeatured,
+    );
+  }
+
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      sellingCount: json["sellingCount"] ?? 0,
+      reviews: json["reviews"] != null
+          ? List<ReviewModel>.from(
+              json["reviews"].map((e) => ReviewModel.fromJson(e)),
+            )
+          : [],
+      expirationsMonth: json["expirationsMonth"] ?? 0,
+      numberOfCalories: json["numberOfCalories"] ?? 0,
+      unitAmount: json["unitAmount"] ?? 0,
+      productName: json["productName"] ?? '',
+      productCode: json["productCode"] ?? '',
+      productDescription: json["productDescription"] ?? '',
+      productPrice: json["productPrice"] ?? 0,
+      isFeatured: json["isFeatured"] ?? false,
+      urlImage: json["urlImage"],
+      isOrganic: json["isOrganic"] ?? false,
+      avrRating: json["avrRating"] ?? 0,
+      ratingCount: json["ratingCount"] ?? 0,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       "sellingCount": sellingCount,
