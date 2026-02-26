@@ -1,10 +1,11 @@
-import 'package:ecommerce_app/core/cubits/products_cubit/products_cubit.dart';
-import 'package:ecommerce_app/core/helper/get_dummy_products.dart';
-import 'package:ecommerce_app/core/widgets/custom_error_widget.dart';
-import 'package:ecommerce_app/features/home/presentation/views/widgets/products_grid_view.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/products_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
+import '../../../../../core/helper/get_dummy_products.dart';
+import '../../../../../core/widgets/custom_error_widget.dart';
+import '../../manager/cubits/products_cubit/products_cubit.dart';
 
 class ProductsGridViewBlocBuilder extends StatelessWidget {
   const ProductsGridViewBlocBuilder({super.key});

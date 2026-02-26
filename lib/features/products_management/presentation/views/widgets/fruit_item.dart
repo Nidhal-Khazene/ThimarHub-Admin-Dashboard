@@ -1,12 +1,10 @@
-import 'package:ecommerce_app/core/utils/colors.dart';
-import 'package:ecommerce_app/core/utils/styles.dart';
-import 'package:ecommerce_app/features/cart/presentation/manager/cubits/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../entities/product_entity.dart';
-import 'custom_image_network.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/colors_data.dart';
+import '../../../../../core/widgets/custom_image_network.dart';
+import '../../../../add_product/domain/entities/product_entity.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
@@ -63,13 +61,13 @@ class FruitItem extends StatelessWidget {
                         TextSpan(
                           text: '${productEntity.productPrice}دينار ',
                           style: AppStyles.bold13.copyWith(
-                            color: ColorData.kSecondaryColor,
+                            color: ColorsData.kSecondaryColor,
                           ),
                         ),
                         TextSpan(
                           text: '/ الكيلو',
                           style: AppStyles.semiBold13.copyWith(
-                            color: ColorData.kLightSecondaryColor,
+                            color: ColorsData.kLightSecondaryColor,
                           ),
                         ),
                       ],
@@ -78,13 +76,13 @@ class FruitItem extends StatelessWidget {
                   ),
                   trailing: GestureDetector(
                     onTap: () {
-                      context.read<CartCubit>().addProductEntity(productEntity);
+                      // context.read<CartCubit>().addProductEntity(productEntity);
                     },
                     child: Container(
                       height: 36,
                       width: 36,
                       decoration: ShapeDecoration(
-                        color: ColorData.kPrimaryColor,
+                        color: ColorsData.kPrimaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(100),
                         ),
