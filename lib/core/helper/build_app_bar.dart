@@ -7,26 +7,33 @@ AppBar buildAppBar({
   required BuildContext context,
   required String title,
   Widget? leading,
+  Color? backgroundColor,
+  Color? textColor,
 }) {
   return AppBar(
+    toolbarHeight: 100,
     leading:
         leading ??
         (Navigator.canPop(context)
             ? GestureDetector(
                 onTap: () => Navigator.pop(context),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.only(right: 16),
-                  child: Icon(Icons.arrow_back_ios, size: 20),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 20,
+                    color: ColorsData.kLightSecondaryColor,
+                  ),
                 ),
               )
             : SizedBox()),
     title: Text(title),
     centerTitle: true,
-    backgroundColor: Colors.transparent,
+    backgroundColor: backgroundColor ?? Colors.transparent,
     elevation: 0,
     titleTextStyle: AppStyles.bold19.copyWith(
       fontFamily: "Cairo",
-      color: ColorsData.kFontPrimaryColor,
+      color: textColor ?? ColorsData.kFontPrimaryColor,
     ),
   );
 }
