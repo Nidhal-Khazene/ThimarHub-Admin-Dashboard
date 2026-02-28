@@ -15,8 +15,8 @@ import 'features/auth/presentation/views/login_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SupabaseStorageService.initSupabase();
-  SupabaseStorageService.createBucket(bucketName: BackendBreakPoint.images);
+  // await SupabaseStorageService.initSupabase();
+  // SupabaseStorageService.createBucket(bucketName: BackendBreakPoint.images);
   Bloc.observer = CustomBlocObserver();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setupGetIt();
