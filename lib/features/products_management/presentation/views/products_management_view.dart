@@ -16,18 +16,7 @@ class ProductsManagementView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(
-        title: "المنتجات",
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Icon(Icons.arrow_back_ios),
-          ),
-        ),
-      ),
+      appBar: buildAppBar(title: "المنتجات", context: context),
       body: SafeArea(
         child: Padding(
           padding: kPrimaryScreenPadding,

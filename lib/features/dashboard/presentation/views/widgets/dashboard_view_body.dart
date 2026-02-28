@@ -2,6 +2,7 @@ import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/wi
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/assets.dart';
+import '../../../../orders/presentation/views/orders_view.dart';
 import '../../../../products_management/presentation/views/products_management_view.dart';
 
 class DashboardViewBody extends StatelessWidget {
@@ -24,10 +25,15 @@ class DashboardViewBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24),
-          DashboardItem(
-            textContent: "خدمة العملاء والطلبات ",
-            iconImage: Assets.imagesDashboardChecked,
-            iconImagePadding: 18,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, OrdersView.routeName);
+            },
+            child: DashboardItem(
+              textContent: "خدمة العملاء والطلبات ",
+              iconImage: Assets.imagesDashboardChecked,
+              iconImagePadding: 18,
+            ),
           ),
           SizedBox(height: 24),
           DashboardItem(

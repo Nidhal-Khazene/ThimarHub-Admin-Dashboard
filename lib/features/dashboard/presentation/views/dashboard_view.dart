@@ -6,23 +6,13 @@ import '../../../../core/helper/build_app_bar.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
+
   static const routeName = "DashboardView";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(
-        title: "لوحة التحكم",
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Icon(Icons.arrow_back_ios),
-          ),
-        ),
-      ),
+      appBar: buildAppBar(title: "لوحة التحكم", context: context),
       body: SafeArea(
         child: Padding(
           padding: kPrimaryScreenPadding,

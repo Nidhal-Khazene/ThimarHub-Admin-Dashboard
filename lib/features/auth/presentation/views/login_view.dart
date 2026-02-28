@@ -11,7 +11,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "تسجيل الدخول"),
+      appBar: buildAppBar(title: "تسجيل الدخول", context: context),
       body: SafeArea(
         child: Padding(padding: kPrimaryScreenPadding, child: LoginViewBody()),
       ),

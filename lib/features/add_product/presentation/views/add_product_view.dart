@@ -17,7 +17,7 @@ class AddProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "Add Product"),
+      appBar: buildAppBar(title: "Add Product", context: context),
       body: SafeArea(
         child: Padding(
           padding: kPrimaryScreenPadding,
