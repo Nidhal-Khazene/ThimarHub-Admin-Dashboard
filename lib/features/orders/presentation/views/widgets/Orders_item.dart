@@ -12,6 +12,7 @@ class OrdersItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: ColorsData.kBorderColor, width: 1),
         ),
       ),
