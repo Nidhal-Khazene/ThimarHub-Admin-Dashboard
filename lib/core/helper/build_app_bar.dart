@@ -22,7 +22,7 @@ AppBar buildAppBar({
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 20,
-                    color: ColorsData.kLightSecondaryColor,
+                    color: Colors.white,
                   ),
                 ),
               )
