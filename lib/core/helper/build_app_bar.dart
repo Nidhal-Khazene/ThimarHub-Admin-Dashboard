@@ -29,11 +29,11 @@ AppBar buildAppBar({
             : SizedBox()),
     title: Text(title),
     centerTitle: true,
-    backgroundColor: backgroundColor ?? Colors.transparent,
+    backgroundColor: backgroundColor ?? ColorsData.kLightPrimaryColor,
     elevation: 0,
     titleTextStyle: AppStyles.bold19.copyWith(
       fontFamily: "Cairo",
-      color: textColor ?? ColorsData.kFontPrimaryColor,
+      color: textColor ?? Colors.white,
     ),
   );
 }

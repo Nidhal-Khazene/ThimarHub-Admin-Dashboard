@@ -14,6 +14,7 @@ class LoginViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          SizedBox(height: 24),
           CustomTextFormField(hintText: "البريد الإلكتروني"),
           SizedBox(height: 16),
           CustomTextFormField(
