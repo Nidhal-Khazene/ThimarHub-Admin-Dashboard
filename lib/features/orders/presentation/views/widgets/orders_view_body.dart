@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/filter_section.dart';
 import 'package:flutter/material.dart';
 
 class OrdersViewBody extends StatelessWidget {
@@ -5,6 +6,6 @@ class OrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(children: [FilterSection()]);
   }
 }
