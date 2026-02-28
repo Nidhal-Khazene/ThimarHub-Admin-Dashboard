@@ -9,20 +9,25 @@ class FilterSectionItem extends StatelessWidget {
     required this.textColor,
     required this.backgroundColor,
     required this.borderColor,
+    this.textStyle,
+    this.width,
+    this.height,
   });
 
   final String textContent;
   final Color textColor;
   final Color backgroundColor;
   final Color borderColor;
+  final TextStyle? textStyle;
+  final double? width, height;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 100),
       curve: Curves.bounceInOut,
-      width: 110,
-      height: 32,
+      width: width ?? 110,
+      height: height ?? 32,
       padding: const EdgeInsets.only(top: 2, left: 12, right: 12, bottom: 2),
       decoration: ShapeDecoration(
         color: backgroundColor,
@@ -34,7 +39,7 @@ class FilterSectionItem extends StatelessWidget {
       child: Center(
         child: Text(
           textContent,
-          style: AppStyles.medium15.copyWith(color: textColor),
+          style: textStyle ?? AppStyles.medium15.copyWith(color: textColor),
         ),
       ),
     );
