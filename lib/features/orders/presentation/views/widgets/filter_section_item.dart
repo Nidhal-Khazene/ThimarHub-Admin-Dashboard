@@ -26,7 +26,7 @@ class FilterSectionItem extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 100),
       curve: Curves.bounceInOut,
-      width: width ?? 110,
+      width: width ?? 80,
       height: height ?? 32,
       padding: const EdgeInsets.only(top: 2, left: 12, right: 12, bottom: 2),
       decoration: ShapeDecoration(

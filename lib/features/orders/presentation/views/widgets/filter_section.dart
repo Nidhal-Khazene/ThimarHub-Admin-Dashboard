@@ -6,7 +6,7 @@ import 'filter_section_item.dart';
 class FilterSection extends StatefulWidget {
   const FilterSection({super.key});
 
-  static final List<String> filterList = ["نشط", "مكتمل", "ملغي"];
+  static final List<String> filterList = ["الكل", "نشط", "مكتمل", "ملغي"];
 
   @override
   State<FilterSection> createState() => _FilterSectionState();
@@ -18,24 +18,26 @@ class _FilterSectionState extends State<FilterSection> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      spacing: 10,
       children: List.generate(
         FilterSection.filterList.length,
-        (index) => GestureDetector(
-          onTap: () {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-          child: FilterSectionItem(
-            textContent: FilterSection.filterList[index],
-            textColor: selectedIndex == index
-                ? Colors.white
-                : ColorsData.kLightPrimaryColor,
-            backgroundColor: selectedIndex == index
-                ? ColorsData.kLightPrimaryColor
-                : Colors.white,
-            borderColor: ColorsData.kLightPrimaryColor,
+        (index) => Expanded(
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            child: FilterSectionItem(
+              textContent: FilterSection.filterList[index],
+              textColor: selectedIndex == index
+                  ? Colors.white
+                  : ColorsData.kLightPrimaryColor,
+              backgroundColor: selectedIndex == index
+                  ? ColorsData.kLightPrimaryColor
+                  : Colors.white,
+              borderColor: ColorsData.kLightPrimaryColor,
+            ),
           ),
         ),
       ),
