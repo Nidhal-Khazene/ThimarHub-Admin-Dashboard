@@ -1,3 +1,5 @@
+import '../../domain/entities/product_order_entity.dart';
+
 class OrderProductsModel {
   final String productCode;
   final String productName;
@@ -31,5 +33,15 @@ class OrderProductsModel {
       "imageUrl": imageUrl,
       "quantity": quantity,
     };
+  }
+
+  OrderProductsEntity toEntity() {
+    return OrderProductsEntity(
+      productCode: productCode,
+      productName: productName,
+      productPrice: productPrice,
+      imageUrl: imageUrl,
+      quantity: quantity,
+    );
   }
 }

@@ -1,3 +1,5 @@
+import '../../domain/entities/shipping_address_entity.dart';
+
 class ShippingAddressModel {
   int? id;
   String? fullName;
@@ -35,5 +37,16 @@ class ShippingAddressModel {
       "city": city,
       "apartmentNumber": apartmentNumber,
     };
+  }
+
+  ShippingAddressEntity toEntity() {
+    return ShippingAddressEntity(
+      id: id,
+      fullName: fullName,
+      email: email,
+      address: address,
+      city: city,
+      apartmentNumber: apartmentNumber,
+    );
   }
 }

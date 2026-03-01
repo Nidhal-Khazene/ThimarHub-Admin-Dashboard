@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_dashboard/features/orders/data/models/payment_card_model.dart';
 import 'package:ecommerce_app_dashboard/features/orders/data/models/product_order_model.dart';
 import 'package:ecommerce_app_dashboard/features/orders/data/models/shipping_address_model.dart';
+import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
 
 class OrderModel {
   final double totalPrice;
@@ -51,5 +52,18 @@ class OrderModel {
       "paymentCardModel": paymentCardModel.toJson(),
       "paymentMethod": paymentMethod,
     };
+  }
+
+  OrderEntity toEntity() {
+    return OrderEntity(
+      totalPrice: totalPrice,
+      uID: uID,
+      shippingAddressEntity: shippingAddressModel.toEntity(),
+      orderProducts: orderProducts.map((e) => e.toEntity()).toList(),
+      paymentCardEntity: paymentCardModel.toEntity(),
+      paymentMethod: paymentMethod,
+      status: status,
+      date: date,
+    );
   }
 }

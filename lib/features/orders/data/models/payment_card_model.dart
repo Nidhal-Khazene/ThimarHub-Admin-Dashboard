@@ -1,3 +1,5 @@
+import '../../domain/entities/payment_card_entity.dart';
+
 class PaymentCardModel {
   final String name;
   final String cardNumber;
@@ -25,4 +27,13 @@ class PaymentCardModel {
     "expirationCard": expirationCard,
     "cvv": cvv,
   };
+
+  PaymentCardEntity toEntity() {
+    return PaymentCardEntity(
+      name: name,
+      cardNumber: cardNumber,
+      expirationCard: expirationCard,
+      cvv: cvv,
+    );
+  }
 }
