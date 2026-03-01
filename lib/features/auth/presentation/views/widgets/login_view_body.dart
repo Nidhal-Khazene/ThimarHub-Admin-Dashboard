@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
+import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/dashboard_view.dart';
@@ -37,6 +38,7 @@ class LoginViewBody extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, DashboardView.routeName);
             },
+            backgroundColor: ColorsData.kLightPrimaryColor,
           ),
           SizedBox(height: 37),
           SizedBox(
