@@ -48,7 +48,12 @@ class ProductOrderItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('29 Nov, 01:20 pm ', style: AppStyles.regular13),
-                  Text('2 items', style: AppStyles.regular13),
+                  Text(
+                    '2 عناصر',
+                    style: AppStyles.regular13.copyWith(
+                      color: ColorsData.kSecondaryColor,
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 5),
