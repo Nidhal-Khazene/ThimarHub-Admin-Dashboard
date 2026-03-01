@@ -4,10 +4,12 @@ import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widge
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/filter_section_item.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/assets.dart';
+import '../../../data/models/order_model.dart';
 
 class ProductOrderItem extends StatelessWidget {
-  const ProductOrderItem({super.key});
+  const ProductOrderItem({super.key, required this.orderModel});
+
+  final OrderModel orderModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class ProductOrderItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
-              image: AssetImage(Assets.imagesProductsAnanas),
+              image: AssetImage(orderModel.orderProducts[0].imageUrl),
             ),
           ),
         ),
@@ -32,10 +34,13 @@ class ProductOrderItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('أناناس', style: AppStyles.bold19),
+                  Text(
+                    orderModel.orderProducts[0].productName,
+                    style: AppStyles.bold19,
+                  ),
                   SizedBox(width: 8),
                   Text(
-                    '20 دينار',
+                    '${orderModel.orderProducts[0].productPrice} دينار',
                     textAlign: TextAlign.right,
                     style: AppStyles.bold19.copyWith(
                       color: ColorsData.kPrimaryColor,
@@ -47,16 +52,16 @@ class ProductOrderItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('29 Nov, 01:20 pm ', style: AppStyles.regular13),
+                  Text('${orderModel.date} ', style: AppStyles.regular13),
                   Text(
-                    '2 عناصر',
+                    '${orderModel.orderProducts[0].quantity} عناصر',
                     style: AppStyles.regular13.copyWith(
                       color: ColorsData.kSecondaryColor,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

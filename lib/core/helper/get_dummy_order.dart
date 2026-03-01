@@ -2,6 +2,7 @@ import '../../features/orders/data/models/order_model.dart';
 import '../../features/orders/data/models/payment_card_model.dart';
 import '../../features/orders/data/models/product_order_model.dart';
 import '../../features/orders/data/models/shipping_address_model.dart';
+import '../utils/assets.dart';
 
 OrderModel getDummyOrder() {
   final shippingAddress = ShippingAddressModel(
@@ -16,16 +17,16 @@ OrderModel getDummyOrder() {
   final products = [
     OrderProductsModel(
       productCode: "PRD-001",
-      productName: "Nike Air Max",
+      productName: "اناناس",
       productPrice: 120.0,
-      imageUrl: "https://dummyimage.com/600x400/000/fff",
+      imageUrl: Assets.imagesProductsAnanas,
       quantity: 1,
     ),
     OrderProductsModel(
       productCode: "PRD-002",
-      productName: "Adidas Hoodie",
+      productName: "افوكادو",
       productPrice: 80.0,
-      imageUrl: "https://dummyimage.com/600x400/000/fff",
+      imageUrl: Assets.imagesProductsAvocado,
       quantity: 2,
     ),
   ];

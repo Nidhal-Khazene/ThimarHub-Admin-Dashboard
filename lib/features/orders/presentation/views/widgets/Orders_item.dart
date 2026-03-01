@@ -1,10 +1,12 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
+import 'package:ecommerce_app_dashboard/features/orders/data/models/order_model.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/product_order_item.dart';
 import 'package:flutter/material.dart';
 
 class OrdersItem extends StatelessWidget {
-  const OrdersItem({super.key});
+  const OrdersItem({super.key, required this.orderModel});
+  final OrderModel orderModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class OrdersItem extends StatelessWidget {
             children: [
               Text("المبلغ الاجمالي: ", style: AppStyles.bold16),
               SizedBox(width: 4),
-              Text("1000 دج", style: AppStyles.semiBold13),
+              Text("دج${orderModel.totalPrice}", style: AppStyles.semiBold13),
             ],
           ),
           SizedBox(height: 16),
@@ -37,7 +39,7 @@ class OrdersItem extends StatelessWidget {
               ),
               SizedBox(width: 4),
               Text(
-                "1234",
+                orderModel.uID,
                 style: AppStyles.semiBold13.copyWith(
                   color: ColorsData.kFontSecondaryColor,
                 ),
@@ -47,11 +49,14 @@ class OrdersItem extends StatelessWidget {
           SizedBox(height: 16),
           Text("عنوان الشحن: ", style: AppStyles.bold16),
           SizedBox(height: 4),
-          Text("الجزائر ورقلة سيدي خويلد", style: AppStyles.semiBold13),
+          Text(
+            "${orderModel.shippingAddressModel.address}",
+            style: AppStyles.semiBold13,
+          ),
           SizedBox(height: 16),
           Text("المنتجات:", style: AppStyles.bold16),
           SizedBox(height: 16),
-          ProductOrderItem(),
+          ProductOrderItem(orderModel: orderModel),
         ],
       ),
     );
