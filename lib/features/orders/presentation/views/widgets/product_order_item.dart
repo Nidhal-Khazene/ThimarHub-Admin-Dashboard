@@ -5,10 +5,16 @@ import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widge
 import 'package:flutter/material.dart';
 
 import '../../../data/models/order_model.dart';
+import '../../../data/models/product_order_model.dart';
 
 class ProductOrderItem extends StatelessWidget {
-  const ProductOrderItem({super.key, required this.orderModel});
+  const ProductOrderItem({
+    super.key,
+    required this.orderProductsModel,
+    required this.orderModel,
+  });
 
+  final OrderProductsModel orderProductsModel;
   final OrderModel orderModel;
 
   @override
@@ -22,7 +28,7 @@ class ProductOrderItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
-              image: AssetImage(orderModel.orderProducts[0].imageUrl),
+              image: AssetImage(orderProductsModel.imageUrl),
             ),
           ),
         ),
@@ -34,13 +40,10 @@ class ProductOrderItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    orderModel.orderProducts[0].productName,
-                    style: AppStyles.bold19,
-                  ),
+                  Text(orderProductsModel.productName, style: AppStyles.bold19),
                   SizedBox(width: 8),
                   Text(
-                    '${orderModel.orderProducts[0].productPrice} دينار',
+                    '${orderProductsModel.productPrice} دينار',
                     textAlign: TextAlign.right,
                     style: AppStyles.bold19.copyWith(
                       color: ColorsData.kPrimaryColor,
@@ -54,7 +57,7 @@ class ProductOrderItem extends StatelessWidget {
                 children: [
                   Text('${orderModel.date} ', style: AppStyles.regular13),
                   Text(
-                    '${orderModel.orderProducts[0].quantity} عناصر',
+                    '${orderProductsModel.quantity} عناصر',
                     style: AppStyles.regular13.copyWith(
                       color: ColorsData.kSecondaryColor,
                     ),

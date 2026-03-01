@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class OrdersItem extends StatelessWidget {
   const OrdersItem({super.key, required this.orderModel});
+
   final OrderModel orderModel;
 
   @override
@@ -56,7 +57,15 @@ class OrdersItem extends StatelessWidget {
           SizedBox(height: 16),
           Text("المنتجات:", style: AppStyles.bold16),
           SizedBox(height: 16),
-          ProductOrderItem(orderModel: orderModel),
+          ProductOrderItem(
+            orderModel: orderModel,
+            orderProductsModel: orderModel.orderProducts[0],
+          ),
+          SizedBox(height: 8),
+          ProductOrderItem(
+            orderModel: orderModel,
+            orderProductsModel: orderModel.orderProducts[1],
+          ),
         ],
       ),
     );
