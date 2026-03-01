@@ -30,7 +30,9 @@ class OrderModel {
       shippingAddressModel: ShippingAddressModel.fromJson(
         json["shippingAddressModel"],
       ),
-      orderProducts: json["orderProducts"],
+      orderProducts: (json["orderProducts"] as List)
+          .map((e) => OrderProductsModel.fromJson(e))
+          .toList(),
       paymentCardModel: PaymentCardModel.fromJson(json["paymentCardModel"]),
       paymentMethod: json["paymentMethod"],
       status: json["status"],
