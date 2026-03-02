@@ -4,6 +4,8 @@ import 'package:ecommerce_app_dashboard/core/services/database_service.dart';
 import 'package:ecommerce_app_dashboard/core/services/firebase_cloud_storage.dart';
 import 'package:ecommerce_app_dashboard/core/services/firestore_service.dart';
 import 'package:ecommerce_app_dashboard/core/services/storage_service.dart';
+import 'package:ecommerce_app_dashboard/features/orders/data/repos/orders_repo_impl.dart';
+import 'package:ecommerce_app_dashboard/features/orders/domain/repos/orders_repo.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/products_management/data/repos/products_repo_impl.dart';
@@ -23,5 +25,9 @@ void setupGetIt() {
   );
   getIt.registerSingleton<ProductsRepo>(
     ProductsRepoImpl(databaseService: getIt<DatabaseService>()),
+  );
+
+  getIt.registerSingleton<OrdersRepo>(
+    OrdersRepoImpl(databaseService: getIt<DatabaseService>()),
   );
 }
