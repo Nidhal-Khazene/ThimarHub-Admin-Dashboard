@@ -1,8 +1,12 @@
 import 'package:ecommerce_app_dashboard/constants.dart';
 import 'package:ecommerce_app_dashboard/core/helper/build_app_bar.dart';
+import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
+import 'package:ecommerce_app_dashboard/features/orders/domain/repos/orders_repo.dart';
+import 'package:ecommerce_app_dashboard/features/orders/presentation/manager/cubits/fetch_orders_cubit/fetch_orders_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/orders_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
@@ -19,7 +23,14 @@ class OrdersView extends StatelessWidget {
         context: context,
       ),
       body: SafeArea(
-        child: Padding(padding: kPrimaryScreenPadding, child: OrdersViewBody()),
+        child: Padding(
+          padding: kPrimaryScreenPadding,
+          child: BlocProvider(
+            create: (context) =>
+                FetchOrdersCubit(ordersRepo: getIt<OrdersRepo>()),
+            child: OrdersViewBody(),
+          ),
+        ),
       ),
     );
   }
