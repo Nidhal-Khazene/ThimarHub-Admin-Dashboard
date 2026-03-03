@@ -55,6 +55,10 @@ class OrdersItem extends StatelessWidget {
             style: AppStyles.semiBold13,
           ),
           SizedBox(height: 16),
+          Text("طريقة الدفع: ", style: AppStyles.bold16),
+          SizedBox(height: 4),
+          Text(orderEntity.paymentMethod, style: AppStyles.semiBold13),
+          SizedBox(height: 16),
           Text("المنتجات:", style: AppStyles.bold16),
           SizedBox(height: 16),
           Column(
