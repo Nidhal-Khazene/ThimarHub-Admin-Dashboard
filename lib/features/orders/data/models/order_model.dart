@@ -10,12 +10,12 @@ class OrderModel {
   final List<OrderProductsModel> orderProducts;
   final PaymentCardModel paymentCardModel;
   final String paymentMethod;
-  final String? status;
-  final String? date;
+  final String status;
+  final String date;
 
   OrderModel({
-    this.status,
-    this.date,
+    required this.status,
+    required this.date,
     required this.paymentCardModel,
     required this.orderProducts,
     required this.paymentMethod,
