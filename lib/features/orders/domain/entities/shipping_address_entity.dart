@@ -14,4 +14,6 @@ class ShippingAddressEntity {
     this.city,
     this.apartmentNumber,
   });
+
+  String addressToString() => "$apartmentNumber,$city,$address";
 }

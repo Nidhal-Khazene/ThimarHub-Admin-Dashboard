@@ -51,7 +51,7 @@ class OrdersItem extends StatelessWidget {
           Text("عنوان الشحن: ", style: AppStyles.bold16),
           SizedBox(height: 4),
           Text(
-            "${orderEntity.shippingAddressEntity.address}",
+            orderEntity.shippingAddressEntity.addressToString(),
             style: AppStyles.semiBold13,
           ),
           SizedBox(height: 16),
