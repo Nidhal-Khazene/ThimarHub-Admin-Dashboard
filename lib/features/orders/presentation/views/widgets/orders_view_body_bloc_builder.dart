@@ -6,8 +6,20 @@ import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../manager/cubits/fetch_orders_cubit/fetch_orders_cubit.dart';
 import 'orders_view_body.dart';
 
-class OrderViewBodyBlocBuilder extends StatelessWidget {
+class OrderViewBodyBlocBuilder extends StatefulWidget {
   const OrderViewBodyBlocBuilder({super.key});
+
+  @override
+  State<OrderViewBodyBlocBuilder> createState() =>
+      _OrderViewBodyBlocBuilderState();
+}
+
+class _OrderViewBodyBlocBuilderState extends State<OrderViewBodyBlocBuilder> {
+  @override
+  void initState() {
+    context.read<FetchOrdersCubit>().fetchOrders();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
