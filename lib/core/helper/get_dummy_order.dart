@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_dashboard/core/enums/order_status_enum.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/payment_card_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/product_order_entity.dart';
@@ -51,7 +52,7 @@ OrderEntity getDummyOrder() {
     orderProducts: products,
     paymentCardEntity: paymentCard,
     paymentMethod: "Credit Card",
-    status: "pending",
+    status: OrderStatusEnum.pending,
     date: DateTime.now().toString(),
   );
 }

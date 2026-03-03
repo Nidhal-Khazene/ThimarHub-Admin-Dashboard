@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_dashboard/core/enums/order_status_enum.dart';
 import 'package:ecommerce_app_dashboard/features/orders/data/models/payment_card_model.dart';
 import 'package:ecommerce_app_dashboard/features/orders/data/models/product_order_model.dart';
 import 'package:ecommerce_app_dashboard/features/orders/data/models/shipping_address_model.dart';
@@ -62,7 +63,9 @@ class OrderModel {
       orderProducts: orderProducts.map((e) => e.toEntity()).toList(),
       paymentCardEntity: paymentCardModel.toEntity(),
       paymentMethod: paymentMethod,
-      status: status,
+      status: OrderStatusEnum.values.firstWhere(
+        (e) => e.name.toString() == status,
+      ),
       date: date,
     );
   }

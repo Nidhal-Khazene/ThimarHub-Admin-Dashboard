@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_dashboard/core/enums/order_status_enum.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/payment_card_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/product_order_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/shipping_address_entity.dart';
@@ -9,7 +10,7 @@ class OrderEntity {
   final List<OrderProductsEntity> orderProducts;
   final PaymentCardEntity paymentCardEntity;
   final String paymentMethod;
-  final String status;
+  final OrderStatusEnum status;
   final String date;
 
   OrderEntity({
