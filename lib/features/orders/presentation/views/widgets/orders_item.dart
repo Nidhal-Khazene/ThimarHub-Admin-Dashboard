@@ -1,13 +1,13 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
-import 'package:ecommerce_app_dashboard/features/orders/data/models/order_model.dart';
+import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/product_order_item.dart';
 import 'package:flutter/material.dart';
 
 class OrdersItem extends StatelessWidget {
-  const OrdersItem({super.key, required this.orderModel});
+  const OrdersItem({super.key, required this.orderEntity});
 
-  final OrderModel orderModel;
+  final OrderEntity orderEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class OrdersItem extends StatelessWidget {
             children: [
               Text("المبلغ الاجمالي: ", style: AppStyles.bold16),
               SizedBox(width: 4),
-              Text("دج${orderModel.totalPrice}", style: AppStyles.semiBold13),
+              Text("دج${orderEntity.totalPrice}", style: AppStyles.semiBold13),
             ],
           ),
           SizedBox(height: 16),
@@ -40,7 +40,7 @@ class OrdersItem extends StatelessWidget {
               ),
               SizedBox(width: 4),
               Text(
-                orderModel.uID,
+                orderEntity.uID,
                 style: AppStyles.semiBold13.copyWith(
                   color: ColorsData.kFontSecondaryColor,
                 ),
@@ -51,20 +51,21 @@ class OrdersItem extends StatelessWidget {
           Text("عنوان الشحن: ", style: AppStyles.bold16),
           SizedBox(height: 4),
           Text(
-            "${orderModel.shippingAddressModel.address}",
+            "${orderEntity.shippingAddressEntity.address}",
             style: AppStyles.semiBold13,
           ),
           SizedBox(height: 16),
           Text("المنتجات:", style: AppStyles.bold16),
           SizedBox(height: 16),
-          ProductOrderItem(
-            orderModel: orderModel,
-            orderProductsModel: orderModel.orderProducts[0],
-          ),
-          SizedBox(height: 8),
-          ProductOrderItem(
-            orderModel: orderModel,
-            orderProductsModel: orderModel.orderProducts[1],
+          Column(
+            spacing: 8,
+            children: List.generate(
+              orderEntity.orderProducts.length,
+              (index) => ProductOrderItem(
+                orderProductsEntity: orderEntity.orderProducts[index],
+                orderEntity: orderEntity,
+              ),
+            ),
           ),
         ],
       ),

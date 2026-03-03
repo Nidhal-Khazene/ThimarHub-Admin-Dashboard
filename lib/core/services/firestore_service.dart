@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'database_service.dart';
+import 'package:ecommerce_app_dashboard/core/services/database_service.dart';
 
 class FirestoreService extends DatabaseService {
-  FirebaseFirestore db = FirebaseFirestore.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Future<void> addData({
@@ -12,25 +11,45 @@ class FirestoreService extends DatabaseService {
     String? documentId,
   }) async {
     if (documentId != null) {
-      await db.collection(path).doc(documentId).set(data);
+      await firestore.collection(path).doc(documentId).set(data);
     } else {
-      await db.collection(path).add(data);
+      await firestore.collection(path).add(data);
     }
   }
 
   @override
-  Future<Map<String, dynamic>> getData({
+  Future<dynamic> getData({
     String? documentsId,
     required String path,
     Map<String, dynamic>? query,
   }) async {
-    var data = await db.collection(path).doc(documentsId).get();
-    return data.data()!;
+    if (documentsId != null) {
+      var data = await firestore.collection(path).doc(documentsId).get();
+      return data.data();
+    } else {
+      Query<Map<String, dynamic>> data = firestore.collection(path);
+      if (query != null) {
+        if (query['orderBy'] != null) {
+          var orderByField = query['orderBy'];
+          var isDescending = query['descending'];
+          data.orderBy(orderByField, descending: isDescending);
+        }
+        if (query['limit'] != null) {
+          var limit = query['limit'];
+          data.limit(limit);
+        }
+      }
+      var result = await data.get();
+      return result.docs.map((e) => e.data()).toList();
+    }
   }
 
   @override
-  Future<bool> checkIfDataExists({String? documentId, required String path}) {
-    var data = db.collection(path).doc(documentId).get();
+  Future<bool> checkIfDataExists({
+    required String documentId,
+    required String path,
+  }) {
+    var data = firestore.collection(path).doc(documentId).get();
     return data.then((doc) => doc.exists);
   }
 }

@@ -18,7 +18,7 @@ class OrdersRepoImpl extends OrdersRepo {
         path: BackendBreakPoint.getOrders,
       );
       List<OrderEntity> orders = (data as List<dynamic>)
-          .map((e) => OrderModel.fromJson(e).toEntity())
+          .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
           .toList();
       return Right(orders);
     } catch (e) {

@@ -1,35 +1,33 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
+import 'package:ecommerce_app_dashboard/core/widgets/custom_image_network.dart';
+import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
+import 'package:ecommerce_app_dashboard/features/orders/domain/entities/product_order_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/cancel_button.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/filter_section_item.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/models/order_model.dart';
-import '../../../data/models/product_order_model.dart';
-
 class ProductOrderItem extends StatelessWidget {
   const ProductOrderItem({
     super.key,
-    required this.orderProductsModel,
-    required this.orderModel,
+    required this.orderProductsEntity,
+    required this.orderEntity,
   });
 
-  final OrderProductsModel orderProductsModel;
-  final OrderModel orderModel;
+  final OrderProductsEntity orderProductsEntity;
+  final OrderEntity orderEntity;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Container(
-          width: 80,
-          height: 120,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            image: DecorationImage(
-              image: AssetImage(orderProductsModel.imageUrl),
-            ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: SizedBox(
+            width: 80,
+            height: 120,
+            child: CustomImageNetwork(urlImage: orderProductsEntity.imageUrl),
           ),
         ),
         SizedBox(width: 16),
@@ -40,10 +38,13 @@ class ProductOrderItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(orderProductsModel.productName, style: AppStyles.bold19),
+                  Text(
+                    orderProductsEntity.productName,
+                    style: AppStyles.bold19,
+                  ),
                   SizedBox(width: 8),
                   Text(
-                    '${orderProductsModel.productPrice} دينار',
+                    '${orderProductsEntity.productPrice} دينار',
                     textAlign: TextAlign.right,
                     style: AppStyles.bold19.copyWith(
                       color: ColorsData.kPrimaryColor,
@@ -55,9 +56,9 @@ class ProductOrderItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('${orderModel.date} ', style: AppStyles.regular13),
+                  Text('${orderEntity.date} ', style: AppStyles.regular13),
                   Text(
-                    '${orderProductsModel.quantity} عناصر',
+                    '${orderProductsEntity.quantity} عناصر',
                     style: AppStyles.regular13.copyWith(
                       color: ColorsData.kSecondaryColor,
                     ),
