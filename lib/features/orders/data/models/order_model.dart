@@ -27,10 +27,10 @@ class OrderModel {
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
-      totalPrice: json["totalPrice"],
+      totalPrice: (json["totalPrice"] as num).toDouble(),
       uID: json["uID"],
       shippingAddressModel: ShippingAddressModel.fromJson(
-        json["shippingAddressModel"],
+        json["shippingAddressModel"] ?? {},
       ),
       orderProducts: List<OrderProductsModel>.from(
         (json["orderProducts"]).map((e) => OrderProductsModel.fromJson(e)),
@@ -46,8 +46,8 @@ class OrderModel {
     return {
       "totalPrice": totalPrice,
       "uID": uID,
-      "status": "pending",
-      "date": DateTime.now().toString(),
+      "status": status,
+      "date": date,
       "shippingAddressModel": shippingAddressModel.toJson(),
       "orderProducts": orderProducts.map((e) => e.toJson()).toList(),
       "paymentCardModel": paymentCardModel.toJson(),
@@ -64,7 +64,8 @@ class OrderModel {
       paymentCardEntity: paymentCardModel.toEntity(),
       paymentMethod: paymentMethod,
       status: OrderStatusEnum.values.firstWhere(
-        (e) => e.name.toString() == status,
+        (e) => e.name == status,
+        orElse: () => OrderStatusEnum.pending,
       ),
       date: date,
     );
