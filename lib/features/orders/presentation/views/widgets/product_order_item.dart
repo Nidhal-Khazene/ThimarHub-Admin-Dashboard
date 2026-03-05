@@ -71,7 +71,7 @@ class ProductOrderItem extends StatelessWidget {
                 children: [
                   CancelButton(),
                   FilterSectionItem(
-                    textContent: "السائق",
+                    textContent: "orderEntity.status",
                     textColor: ColorsData.kPrimaryColor,
                     backgroundColor: Colors.transparent,
                     borderColor: ColorsData.kPrimaryColor,
