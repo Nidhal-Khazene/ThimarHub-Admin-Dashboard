@@ -5,6 +5,7 @@ import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_en
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/product_order_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/cancel_button.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/filter_section_item.dart';
+import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/order_status_button.dart';
 import 'package:flutter/material.dart';
 
 class ProductOrderItem extends StatelessWidget {
@@ -70,17 +71,7 @@ class ProductOrderItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CancelButton(),
-                  FilterSectionItem(
-                    textContent: "${orderEntity.status.name}",
-                    textColor: ColorsData.kPrimaryColor,
-                    backgroundColor: Colors.transparent,
-                    borderColor: ColorsData.kPrimaryColor,
-                    height: 26,
-                    width: 100,
-                    textStyle: AppStyles.semiBold11.copyWith(
-                      color: ColorsData.kPrimaryColor,
-                    ),
-                  ),
+                  OrderStatusButton(orderEntity: orderEntity),
                 ],
               ),
             ],
