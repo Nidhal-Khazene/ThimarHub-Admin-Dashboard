@@ -5,6 +5,7 @@ import 'package:ecommerce_app_dashboard/features/orders/data/models/shipping_add
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
 
 class OrderModel {
+  final String orderID;
   final double totalPrice;
   final String uID;
   final ShippingAddressModel shippingAddressModel;
@@ -15,6 +16,7 @@ class OrderModel {
   final String date;
 
   OrderModel({
+    required this.orderID,
     required this.status,
     required this.date,
     required this.paymentCardModel,
@@ -27,6 +29,7 @@ class OrderModel {
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      orderID: json["orderID"],
       totalPrice: (json["totalPrice"] as num).toDouble(),
       uID: json["uID"],
       shippingAddressModel: ShippingAddressModel.fromJson(
@@ -44,6 +47,7 @@ class OrderModel {
 
   Map<String, dynamic> toJson() {
     return {
+      "orderId": orderID,
       "totalPrice": totalPrice,
       "uID": uID,
       "status": status,
