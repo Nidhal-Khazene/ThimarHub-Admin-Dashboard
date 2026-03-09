@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_app_dashboard/core/enums/order_status_enum.dart';
 import 'package:ecommerce_app_dashboard/core/errors/failures.dart';
 import 'package:ecommerce_app_dashboard/core/services/database_service.dart';
 import 'package:ecommerce_app_dashboard/core/utils/backend_break_point.dart';
@@ -25,5 +26,14 @@ class OrdersRepoImpl extends OrdersRepo {
     } catch (e) {
       yield Left(ServerFailure(message: "Failed to fetch orders"));
     }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateOrder({
+    required OrderStatusEnum status,
+    required String orderID,
+  }) {
+    // TODO: implement updateOrder
+    throw UnimplementedError();
   }
 }
