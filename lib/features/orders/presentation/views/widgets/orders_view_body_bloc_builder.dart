@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_dashboard/core/helper/get_dummy_order.dart';
+import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/update_order_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -27,7 +28,9 @@ class _OrderViewBodyBlocBuilderState extends State<OrderViewBodyBlocBuilder> {
     return BlocBuilder<FetchOrdersCubit, FetchOrdersState>(
       builder: (context, state) {
         if (state is FetchOrdersSuccess) {
-          return OrdersViewBody(orders: state.orders);
+          return UpdateOrderBlocBuilder(
+            child: OrdersViewBody(orders: state.orders),
+          );
         } else if (state is FetchOrdersFailure) {
           return CustomErrorWidget(text: state.errorMessage);
         } else {
