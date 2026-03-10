@@ -32,8 +32,16 @@ class OrdersRepoImpl extends OrdersRepo {
   Future<Either<Failure, void>> updateOrder({
     required OrderStatusEnum status,
     required String orderID,
-  }) {
-    // TODO: implement updateOrder
-    throw UnimplementedError();
+  }) async {
+    try {
+      await databaseService.updateData(
+        path: BackendBreakPoint.updateOrders,
+        data: {"status": status.name},
+        documentId: orderID,
+      );
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(message: "حدث مشكل في تحديث حالة الطلب."));
+    }
   }
 }
