@@ -6,4 +6,5 @@ class BackendBreakPoint {
   static const productCollections = "products";
   static const getProducts = "products";
   static const getOrders = "orders";
+  static const updateOrders = "orders";
 }
