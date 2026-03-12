@@ -46,6 +46,7 @@ OrderEntity getDummyOrder() {
   );
 
   return OrderEntity(
+    orderID: "Order-12345-dummy",
     uID: "USER-12345",
     totalPrice: total,
     shippingAddressEntity: shippingAddress,
