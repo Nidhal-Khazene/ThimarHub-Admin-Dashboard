@@ -61,6 +61,7 @@ class OrderModel {
 
   OrderEntity toEntity() {
     return OrderEntity(
+      orderID: orderID,
       totalPrice: totalPrice,
       uID: uID,
       shippingAddressEntity: shippingAddressModel.toEntity(),

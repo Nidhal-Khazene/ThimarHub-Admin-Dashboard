@@ -5,6 +5,7 @@ import 'package:ecommerce_app_dashboard/features/orders/domain/entities/shipping
 
 class OrderEntity {
   final double totalPrice;
+  final String orderID;
   final String uID;
   final ShippingAddressEntity shippingAddressEntity;
   final List<OrderProductsEntity> orderProducts;
@@ -14,6 +15,7 @@ class OrderEntity {
   final String date;
 
   OrderEntity({
+    required this.orderID,
     required this.shippingAddressEntity,
     required this.paymentCardEntity,
     required this.status,
