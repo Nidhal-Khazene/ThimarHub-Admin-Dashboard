@@ -36,18 +36,22 @@ class OrderModel {
         json["shippingAddressModel"] ?? {},
       ),
       orderProducts: List<OrderProductsModel>.from(
-        (json["orderProducts"]).map((e) => OrderProductsModel.fromJson(e)),
+        (json["orderProducts"] ?? []).map(
+          (e) => OrderProductsModel.fromJson(e),
+        ),
       ),
-      paymentCardModel: PaymentCardModel.fromJson(json["paymentCardModel"]),
-      paymentMethod: json["paymentMethod"],
-      status: json["status"],
-      date: json["date"],
+      paymentCardModel: PaymentCardModel.fromJson(
+        json["paymentCardModel"] ?? {},
+      ),
+      paymentMethod: json["paymentMethod"] ?? "",
+      status: json["status"] ?? "pending",
+      date: json["date"] ?? "",
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      "orderId": orderID,
+      "orderID": orderID,
       "totalPrice": totalPrice,
       "uID": uID,
       "status": status,

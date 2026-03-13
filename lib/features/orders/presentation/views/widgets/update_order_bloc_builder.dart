@@ -21,10 +21,7 @@ class UpdateOrderBlocBuilder extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Skeletonizer(
-          enabled: state is UpdateOrderLoading,
-          child: OrdersViewBody(orders: [getDummyOrder(), getDummyOrder()]),
-        );
+        return Skeletonizer(enabled: state is UpdateOrderLoading, child: child);
       },
     );
   }
