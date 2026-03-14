@@ -15,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIconColor,
     this.borderWidth,
     this.maxLines = 1,
+    this.hintPadding,
   });
 
   final String hintText;
@@ -28,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
   final double? borderWidth;
   final int? maxLines;
+  final EdgeInsetsGeometry? hintPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +48,12 @@ class CustomTextFormField extends StatelessWidget {
         filled: true,
         fillColor: fillColor ?? const Color(0xffF9FAFA),
         border: buildOutlineInputBorder(),
-        hint: Text(
-          hintText,
-          style: AppStyles.bold13.copyWith(color: const Color(0xFF949D9E)),
+        hint: Padding(
+          padding: hintPadding ?? EdgeInsets.zero,
+          child: Text(
+            hintText,
+            style: AppStyles.bold13.copyWith(color: const Color(0xFF949D9E)),
+          ),
         ),
         prefixIcon: prefixIcon,
         prefixIconColor: prefixIconColor,
