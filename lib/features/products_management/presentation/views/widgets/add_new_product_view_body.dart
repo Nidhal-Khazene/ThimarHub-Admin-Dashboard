@@ -1,5 +1,9 @@
+import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
+import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_image_section.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class AddNewProductViewBody extends StatelessWidget {
   const AddNewProductViewBody({super.key});
@@ -34,6 +38,8 @@ class AddNewProductViewBody extends StatelessWidget {
             maxLines: 5,
             hintPadding: const EdgeInsets.only(top: 32, right: 20),
           ),
+          SizedBox(height: 41),
+          AddImageSection(),
         ],
       ),
     );
