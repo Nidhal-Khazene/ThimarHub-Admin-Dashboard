@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
+import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/order_action_buttons.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/product_order_item.dart';
 import 'package:flutter/material.dart';
 
@@ -71,6 +72,8 @@ class OrdersItem extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 16),
+          OrderActionButtons(orderEntity: orderEntity),
         ],
       ),
     );

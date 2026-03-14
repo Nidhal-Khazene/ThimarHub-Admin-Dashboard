@@ -1,7 +1,5 @@
-import 'package:ecommerce_app_dashboard/core/helper/get_dummy_order.dart';
 import 'package:ecommerce_app_dashboard/core/helper/show_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/manager/cubits/update_orders_cubit/cubit/update_order_cubit.dart';
-import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/orders_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
