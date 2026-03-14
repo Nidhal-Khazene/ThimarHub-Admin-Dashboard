@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
+import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_image_section.dart';
@@ -38,8 +39,21 @@ class AddNewProductViewBody extends StatelessWidget {
             maxLines: 5,
             hintPadding: const EdgeInsets.only(top: 32, right: 20),
           ),
-          SizedBox(height: 41),
+          SizedBox(height: 32),
           AddImageSection(),
+          SizedBox(height: 48),
+          CustomButton(
+            text: "حفظ البيانات",
+            textStyle: AppStyles.bold13.copyWith(color: Colors.white),
+          ),
+          SizedBox(height: 16),
+          CustomButton(
+            text: "لا ارغب",
+            backgroundColor: Colors.transparent,
+            textStyle: AppStyles.bold13.copyWith(
+              color: ColorsData.kPrimaryColor,
+            ),
+          ),
         ],
       ),
     );
