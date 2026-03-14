@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_dashboard/features/auth/presentation/views/login_view.dart';
 import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/orders_view.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_new_product_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/add_product/presentation/views/add_product_view.dart';
@@ -20,6 +21,9 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       );
     case OrdersView.routeName:
       return MaterialPageRoute(builder: (context) => const OrdersView());
+    case AddNewProductView.routeName:
+      return MaterialPageRoute(builder: (context) => const AddNewProductView());
+
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
