@@ -4,7 +4,6 @@ import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_image_section.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class AddNewProductViewBody extends StatelessWidget {
   const AddNewProductViewBody({super.key});
