@@ -32,6 +32,7 @@ class CustomButton extends StatelessWidget {
           backgroundColor: backgroundColor ?? ColorsData.kPrimaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadiusValue ?? 16),
+            side: BorderSide(width: 1, color: ColorsData.kPrimaryColor),
           ),
         ),
         onPressed: onPressed,
