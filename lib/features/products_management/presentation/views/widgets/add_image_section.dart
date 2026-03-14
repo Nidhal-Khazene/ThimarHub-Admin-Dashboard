@@ -1,11 +1,12 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
+import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class AddImageSection extends StatelessWidget {
-  const AddImageSection({super.key});
+  const AddImageSection({super.key, this.productEntity});
+  final ProductEntity? productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class AddImageSection extends StatelessWidget {
             ],
           ),
         ),
-        Icon(Iconsax.gallery_export_copy, size: 124),
+        Image.network(productEntity!.urlImage!, width: 124, height: 124),
       ],
     );
   }

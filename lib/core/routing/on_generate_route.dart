@@ -5,6 +5,7 @@ import 'package:ecommerce_app_dashboard/features/products_management/presentatio
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_product_information_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/add_product/domain/entities/product_entity.dart';
 import '../../features/add_product/presentation/views/add_product_view.dart';
 import '../../features/products_management/presentation/views/products_management_view.dart';
 
@@ -25,8 +26,11 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case AddNewProductView.routeName:
       return MaterialPageRoute(builder: (context) => const AddNewProductView());
     case EditProductInformationView.routeName:
+      final product = settings.arguments as ProductEntity;
+
       return MaterialPageRoute(
-        builder: (context) => const EditProductInformationView(),
+        builder: (context) =>
+            EditProductInformationView(productEntity: product),
       );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

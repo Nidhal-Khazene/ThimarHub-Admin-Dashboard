@@ -16,7 +16,11 @@ class FruitItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditProductInformationView.routeName);
+        Navigator.pushNamed(
+          context,
+          EditProductInformationView.routeName,
+          arguments: productEntity,
+        );
       },
       child: Container(
         decoration: ShapeDecoration(
