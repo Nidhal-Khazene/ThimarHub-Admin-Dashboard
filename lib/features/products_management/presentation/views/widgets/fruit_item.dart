@@ -74,24 +74,6 @@ class FruitItem extends StatelessWidget {
                     ),
                     textAlign: TextAlign.right,
                   ),
-                  trailing: GestureDetector(
-                    onTap: () {
-                      // context.read<CartCubit>().addProductEntity(productEntity);
-                    },
-                    child: Container(
-                      height: 36,
-                      width: 36,
-                      decoration: ShapeDecoration(
-                        color: ColorsData.kPrimaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      ),
-                      child: const Center(
-                        child: Icon(Iconsax.add_copy, color: Colors.white),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
