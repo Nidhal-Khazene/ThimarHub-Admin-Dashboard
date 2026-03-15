@@ -19,21 +19,6 @@ class _IsOrganicFieldState extends State<IsOrganicField> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: "Is product organic?",
-                  style: AppStyles.semiBold13.copyWith(
-                    color: const Color(0xFF949D9E),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(width: kSizedBoxHeight16),
         CustomCheckBox(
           isChecked: isOrganic,
           onChecked: (bool value) {
@@ -41,6 +26,21 @@ class _IsOrganicFieldState extends State<IsOrganicField> {
             widget.onChanged(isOrganic);
             setState(() {});
           },
+        ),
+        const SizedBox(width: kSizedBoxHeight16),
+        Expanded(
+          child: Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: "هل المنتج عضوي؟",
+                  style: AppStyles.semiBold13.copyWith(
+                    color: const Color(0xFF949D9E),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );

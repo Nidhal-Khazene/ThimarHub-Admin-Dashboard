@@ -20,21 +20,6 @@ class _IsFeaturedFieldState extends State<IsFeaturedField> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: "Is the item featured?",
-                  style: AppStyles.semiBold13.copyWith(
-                    color: const Color(0xFF949D9E),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(width: kSizedBoxHeight16),
         CustomCheckBox(
           isChecked: isFeatured,
           onChecked: (bool value) {
@@ -42,6 +27,21 @@ class _IsFeaturedFieldState extends State<IsFeaturedField> {
             widget.onChanged(isFeatured);
             setState(() {});
           },
+        ),
+        const SizedBox(width: kSizedBoxHeight16),
+        Expanded(
+          child: Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: "هل المنتج معروض؟",
+                  style: AppStyles.semiBold13.copyWith(
+                    color: const Color(0xFF949D9E),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
