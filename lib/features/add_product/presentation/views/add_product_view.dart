@@ -2,12 +2,12 @@ import 'package:ecommerce_app_dashboard/constants.dart';
 import 'package:ecommerce_app_dashboard/core/repositories/images_repo.dart';
 import 'package:ecommerce_app_dashboard/core/repositories/product_repo.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/add_product_view_body_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helper/build_app_bar.dart';
+import '../../../products_management/presentation/manager/cubits/add_product_cubit/add_product_cubit.dart';
 
 class AddProductView extends StatelessWidget {
   const AddProductView({super.key});

@@ -3,13 +3,14 @@ import 'dart:io';
 import 'package:ecommerce_app_dashboard/core/helper/show_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/product_entity.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/is_featured_field.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/presentation/views/widgets/is_organic_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../products_management/domain/entities/product_entity.dart';
+import '../../../../products_management/presentation/manager/cubits/add_product_cubit/add_product_cubit.dart';
 
 class AddProductViewBody extends StatefulWidget {
   const AddProductViewBody({super.key});

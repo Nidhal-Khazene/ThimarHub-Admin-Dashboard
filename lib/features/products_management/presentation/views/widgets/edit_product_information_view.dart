@@ -1,6 +1,6 @@
 import 'package:ecommerce_app_dashboard/constants.dart';
 import 'package:ecommerce_app_dashboard/core/helper/build_app_bar.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/product_entity.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_product_information_view_body.dart';
 import 'package:flutter/material.dart';
 

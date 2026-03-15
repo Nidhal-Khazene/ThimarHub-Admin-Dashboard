@@ -3,9 +3,9 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/services/database_service.dart';
 import '../../../../core/utils/backend_break_point.dart';
-import '../../../add_product/data/models/product_model.dart';
-import '../../../add_product/domain/entities/product_entity.dart';
+import '../../domain/entities/product_entity.dart';
 import '../../domain/repos/products_repo.dart';
+import '../models/product_model.dart';
 
 class ProductsRepoImpl implements ProductsRepo {
   final DatabaseService databaseService;

@@ -1,5 +1,5 @@
-import 'package:ecommerce_app_dashboard/features/add_product/data/models/review_model.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/product_entity.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/data/models/review_model.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 
 class ProductModel {
   final String productName;

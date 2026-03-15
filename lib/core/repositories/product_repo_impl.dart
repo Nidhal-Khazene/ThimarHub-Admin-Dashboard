@@ -3,8 +3,8 @@ import 'package:ecommerce_app_dashboard/core/errors/failures.dart';
 import 'package:ecommerce_app_dashboard/core/repositories/product_repo.dart';
 import 'package:ecommerce_app_dashboard/core/services/database_service.dart';
 import 'package:ecommerce_app_dashboard/core/utils/backend_break_point.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/data/models/product_model.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/product_entity.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/data/models/product_model.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 
 class ProductRepoImpl implements ProductRepo {
   final DatabaseService databaseService;

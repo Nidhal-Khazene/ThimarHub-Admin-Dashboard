@@ -2,7 +2,7 @@ import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/product_entity.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_image_section.dart';
 import 'package:flutter/material.dart';
 

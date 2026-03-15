@@ -5,7 +5,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/colors_data.dart';
 import '../../../../../core/widgets/custom_image_network.dart';
-import '../../../../add_product/domain/entities/product_entity.dart';
+import '../../../domain/entities/product_entity.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});

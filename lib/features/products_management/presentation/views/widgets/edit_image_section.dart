@@ -5,7 +5,7 @@ import 'package:ecommerce_app_dashboard/core/widgets/custom_image_network.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-import '../../../../add_product/domain/entities/product_entity.dart';
+import '../../../domain/entities/product_entity.dart';
 
 class EditImageSection extends StatelessWidget {
   const EditImageSection({super.key, required this.productEntity});

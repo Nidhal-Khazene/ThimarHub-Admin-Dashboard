@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../add_product/domain/entities/product_entity.dart';
+import '../../../../domain/entities/product_entity.dart';
 import '../../../../domain/repos/products_repo.dart';
 
 part 'products_state.dart';
