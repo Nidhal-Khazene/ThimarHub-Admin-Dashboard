@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
+import 'package:ecommerce_app_dashboard/core/widgets/custom_image_network.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -41,8 +42,8 @@ class EditImageSection extends StatelessWidget {
             children: [
               Positioned(
                 top: 25,
-                child: Image.network(
-                  productEntity.urlImage!,
+                child: CustomImageNetwork(
+                  urlImage: productEntity.urlImage!,
                   width: 124,
                   height: 124,
                 ),
