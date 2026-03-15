@@ -57,6 +57,7 @@ class EditProductInformationViewBody extends StatelessWidget {
           SizedBox(height: 16),
           CustomButton(
             text: "لا ارغب",
+            borderColor: ColorsData.kPrimaryColor,
             backgroundColor: Colors.transparent,
             textStyle: AppStyles.bold13.copyWith(
               color: ColorsData.kPrimaryColor,
