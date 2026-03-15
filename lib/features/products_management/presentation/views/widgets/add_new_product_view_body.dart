@@ -32,29 +32,78 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
+        autovalidateMode: autoValidateMode,
         child: Column(
           children: [
-            CustomTextFormField(hintText: "اسم الصنف"),
+            CustomTextFormField(
+              onSaved: (value) {
+                productName = value!;
+              },
+              hintText: "اسم الصنف",
+              textInputType: TextInputType.text,
+            ),
+            SizedBox(height: 8),
+            CustomTextFormField(
+              onSaved: (value) {
+                productPrice = num.parse(value!);
+              },
+              hintText: "سعر الصنف",
+              textInputType: TextInputType.number,
+            ),
             SizedBox(height: 8),
             Row(
               children: [
-                Expanded(child: CustomTextFormField(hintText: "تاريخ الانتاج")),
+                Expanded(
+                  child: CustomTextFormField(
+                    onSaved: (value) {
+                      productCode = value!.toLowerCase();
+                    },
+                    hintText: "رمز الصنف",
+                    textInputType: TextInputType.text,
+                  ),
+                ),
                 const SizedBox(width: 16),
                 Expanded(
-                  child: CustomTextFormField(hintText: "تاريخ انتهاء الصلاحيه"),
+                  child: CustomTextFormField(
+                    onSaved: (value) {
+                      expirationsMonth = int.parse(value!);
+                    },
+                    hintText: "مدة الصلاحية بالأشهر",
+                    textInputType: TextInputType.number,
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 16),
             Row(
               children: [
-                Expanded(child: CustomTextFormField(hintText: "السعر")),
+                Expanded(
+                  child: CustomTextFormField(
+                    onSaved: (value) {
+                      unitAmount = int.parse(value!);
+                    },
+                    hintText: "الكمية للسعرات (كغ)",
+                    textInputType: TextInputType.number,
+                  ),
+                ),
                 const SizedBox(width: 16),
-                Expanded(child: CustomTextFormField(hintText: "خصم%")),
+                Expanded(
+                  child: CustomTextFormField(
+                    onSaved: (value) {
+                      numberOfCalories = int.parse(value!);
+                    },
+                    hintText: "عدد السعرات الحرارية",
+                    textInputType: TextInputType.number,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 16),
             CustomTextFormField(
+              onSaved: (value) {
+                productDescription = value!;
+              },
+              textInputType: TextInputType.text,
               hintText: "تفاصيل عنه",
               maxLines: 5,
               hintPadding: const EdgeInsets.only(top: 32, right: 20),
