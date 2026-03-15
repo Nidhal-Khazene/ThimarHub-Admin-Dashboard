@@ -3,7 +3,7 @@ import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app_dashboard/features/add_product/domain/entities/product_entity.dart';
-import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_image_section.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_image_section.dart';
 import 'package:flutter/material.dart';
 
 class EditProductInformationViewBody extends StatelessWidget {
@@ -48,7 +48,7 @@ class EditProductInformationViewBody extends StatelessWidget {
             hintPadding: const EdgeInsets.only(top: 32, right: 20),
           ),
           SizedBox(height: 32),
-          AddImageSection(productEntity: productEntity),
+          EditImageSection(productEntity: productEntity),
           SizedBox(height: 48),
           CustomButton(
             text: "حفظ البيانات",
