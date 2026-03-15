@@ -24,8 +24,8 @@ class ProductsManagementView extends StatelessWidget {
         },
         elevation: 0,
         backgroundColor: ColorsData.kPrimaryColor,
-        child: const Icon(Icons.add, color: Colors.white, size: 32),
         shape: CircleBorder(),
+        child: const Icon(Icons.add, color: Colors.white, size: 32),
       ),
       appBar: buildAppBar(title: "المنتجات", context: context),
       body: SafeArea(

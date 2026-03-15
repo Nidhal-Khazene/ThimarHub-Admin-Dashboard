@@ -2,6 +2,7 @@ import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../add_product/domain/entities/product_entity.dart';
 
@@ -33,7 +34,32 @@ class EditImageSection extends StatelessWidget {
             ],
           ),
         ),
-        Image.network(productEntity.urlImage!, width: 124, height: 124),
+        SizedBox(
+          width: 130,
+          height: 155,
+          child: Stack(
+            children: [
+              Positioned(
+                top: 25,
+                child: Image.network(
+                  productEntity.urlImage!,
+                  width: 124,
+                  height: 124,
+                ),
+              ),
+              Positioned(
+                right: 130 / 2 - 12,
+                child: Icon(Iconsax.gallery_edit_copy),
+              ),
+              Positioned(top: 5, right: 0, child: Icon(Iconsax.camera_copy)),
+              Positioned(
+                top: 5,
+                left: 0,
+                child: Icon(Iconsax.gallery_remove_copy),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
