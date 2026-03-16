@@ -6,9 +6,13 @@ import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_image_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/helper/show_snack_bar.dart';
 import '../../../../add_product/presentation/views/widgets/is_featured_field.dart';
 import '../../../../add_product/presentation/views/widgets/is_organic_field.dart';
+import '../../../domain/entities/product_entity.dart';
+import '../../manager/cubits/add_product_cubit/add_product_cubit.dart';
 
 class AddNewProductViewBody extends StatefulWidget {
   const AddNewProductViewBody({super.key});
@@ -121,15 +125,49 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
               },
             ),
             SizedBox(height: 16),
-            AddImageSection(),
+            AddImageSection(
+              onFileChanged: (image) {
+                fileImage = image;
+              },
+            ),
             SizedBox(height: 48),
             CustomButton(
+              onPressed: () {
+                if (fileImage != null) {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    ProductEntity addProductInputEntity = ProductEntity(
+                      reviews: [],
+                      productName: productName,
+                      productCode: productCode,
+                      productDescription: productDescription,
+                      productPrice: productPrice,
+                      fileImage: fileImage!,
+                      isFeatured: isFeatured,
+                      isOrganic: isOrganic,
+                      unitAmount: unitAmount,
+                      numberOfCalories: numberOfCalories,
+                      expirationsMonth: expirationsMonth,
+                    );
+                    context.read<AddProductCubit>().addProduct(
+                      addProductInputEntity,
+                    );
+                  } else {
+                    autoValidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                } else {
+                  showSnackBar(context, "قم بإضافة صورة");
+                }
+              },
+
               text: "حفظ البيانات",
               textStyle: AppStyles.bold13.copyWith(color: Colors.white),
             ),
             SizedBox(height: 16),
             CustomButton(
               text: "لا ارغب",
+              borderColor: ColorsData.kPrimaryColor,
               backgroundColor: Colors.transparent,
               textStyle: AppStyles.bold13.copyWith(
                 color: ColorsData.kPrimaryColor,

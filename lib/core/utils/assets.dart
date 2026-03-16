@@ -10,6 +10,10 @@ class Assets {
 
   static const String imagesDashboardShippingChart = "assets/images/dashboard/shipping_chart.svg";
 
+  static const String imagesHelperFalseIcon = "assets/images/helper/false_icon.svg";
+
+  static const String imagesHelperTrueCircleContainer = "assets/images/helper/true_circle_container.svg";
+
   static const String imagesProductsAnanas = "assets/images/products/ananas.png";
 
   static const String imagesProductsAvocado = "assets/images/products/avocado.png";
