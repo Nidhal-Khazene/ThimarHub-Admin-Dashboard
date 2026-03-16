@@ -138,7 +138,7 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
                 fileImage = image;
               },
             ),
-            SizedBox(height: 48),
+            SizedBox(height: 16),
             CustomButton(
               onPressed: () {
                 if (fileImage != null) {
@@ -168,11 +168,10 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
                   showFalseSnackBar(context, errorMessage: "قم بإضافة صورة");
                 }
               },
-
               text: "حفظ البيانات",
               textStyle: AppStyles.bold13.copyWith(color: Colors.white),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 8),
             CustomButton(
               text: "لا ارغب",
               onPressed: () {
