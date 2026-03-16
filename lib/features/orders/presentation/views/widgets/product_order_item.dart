@@ -3,7 +3,6 @@ import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_image_network.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/product_order_entity.dart';
-import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/cancel_button.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/order_status_button.dart';
 import 'package:flutter/material.dart';
 
@@ -68,10 +67,7 @@ class ProductOrderItem extends StatelessWidget {
               SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CancelButton(),
-                  OrderStatusButton(orderEntity: orderEntity),
-                ],
+                children: [OrderStatusButton(orderEntity: orderEntity)],
               ),
             ],
           ),
