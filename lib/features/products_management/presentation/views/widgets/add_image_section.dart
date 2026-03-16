@@ -14,12 +14,18 @@ class AddImageSection extends StatefulWidget {
   final ValueChanged<File?> onFileChanged;
 
   @override
-  State<AddImageSection> createState() => _AddImageSectionState();
+  State<AddImageSection> createState() => AddImageSectionState();
 }
 
-class _AddImageSectionState extends State<AddImageSection> {
+class AddImageSectionState extends State<AddImageSection> {
   bool isLoading = false;
   File? fileImage;
+  void clearImage() {
+    setState(() {
+      fileImage = null;
+    });
+    widget.onFileChanged(null);
+  }
 
   @override
   Widget build(BuildContext context) {

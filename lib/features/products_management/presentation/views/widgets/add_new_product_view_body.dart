@@ -23,6 +23,7 @@ class AddNewProductViewBody extends StatefulWidget {
 
 class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<AddImageSectionState> imageKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   late String productName, productCode, productDescription;
   late num productPrice;
@@ -132,6 +133,7 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
             ),
             SizedBox(height: 16),
             AddImageSection(
+              key: imageKey,
               onFileChanged: (image) {
                 fileImage = image;
               },
@@ -175,6 +177,7 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
               text: "لا ارغب",
               onPressed: () {
                 resetForm();
+                imageKey.currentState?.clearImage();
               },
               borderColor: ColorsData.kPrimaryColor,
               backgroundColor: Colors.transparent,
