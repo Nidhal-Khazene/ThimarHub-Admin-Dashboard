@@ -20,12 +20,20 @@ class EditProductInformationViewBody extends StatelessWidget {
         children: [
           CustomTextFormField(hintText: productEntity.productName),
           SizedBox(height: 8),
+          CustomTextFormField(
+            hintText: "السعر: ${productEntity.productPrice} دينار ",
+          ),
+          SizedBox(height: 8),
           Row(
             children: [
-              Expanded(child: CustomTextFormField(hintText: "تاريخ الانتاج")),
+              Expanded(
+                child: CustomTextFormField(hintText: productEntity.productCode),
+              ),
               const SizedBox(width: 16),
               Expanded(
-                child: CustomTextFormField(hintText: "تاريخ انتهاء الصلاحيه"),
+                child: CustomTextFormField(
+                  hintText: productEntity.expirationsMonth.toString(),
+                ),
               ),
             ],
           ),
@@ -34,11 +42,15 @@ class EditProductInformationViewBody extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomTextFormField(
-                  hintText: "السعر: ${productEntity.productPrice} دينار ",
+                  hintText: productEntity.unitAmount.toString(),
                 ),
               ),
               const SizedBox(width: 16),
-              Expanded(child: CustomTextFormField(hintText: "خصم%")),
+              Expanded(
+                child: CustomTextFormField(
+                  hintText: productEntity.numberOfCalories.toString(),
+                ),
+              ),
             ],
           ),
           SizedBox(height: 16),
@@ -47,9 +59,9 @@ class EditProductInformationViewBody extends StatelessWidget {
             maxLines: 5,
             hintPadding: const EdgeInsets.only(top: 32, right: 20),
           ),
-          SizedBox(height: 32),
+          SizedBox(height: 16),
           EditImageSection(productEntity: productEntity),
-          SizedBox(height: 48),
+          SizedBox(height: 16),
           CustomButton(
             text: "حفظ البيانات",
             textStyle: AppStyles.bold13.copyWith(color: Colors.white),
