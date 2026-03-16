@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:ecommerce_app_dashboard/core/helper/show_false_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
@@ -8,11 +9,10 @@ import 'package:ecommerce_app_dashboard/features/products_management/presentatio
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/helper/show_snack_bar.dart';
-import '../../../../add_product/presentation/views/widgets/is_featured_field.dart';
-import '../../../../add_product/presentation/views/widgets/is_organic_field.dart';
 import '../../../domain/entities/product_entity.dart';
 import '../../manager/cubits/add_product_cubit/add_product_cubit.dart';
+import 'is_featured_field.dart';
+import 'is_organic_field.dart';
 
 class AddNewProductViewBody extends StatefulWidget {
   const AddNewProductViewBody({super.key});
@@ -86,7 +86,7 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
                     onSaved: (value) {
                       unitAmount = int.parse(value!);
                     },
-                    hintText: "الكمية للسعرات (كغ)",
+                    hintText: "الكمية للسعرات (غرام)",
                     textInputType: TextInputType.number,
                   ),
                 ),
@@ -114,14 +114,20 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
             ),
             SizedBox(height: 16),
             IsFeaturedField(
+              isChecked: isFeatured,
               onChanged: (value) {
-                isFeatured = value;
+                setState(() {
+                  isFeatured = value;
+                });
               },
             ),
             SizedBox(height: 16),
             IsOrganicField(
+              isChecked: isOrganic,
               onChanged: (value) {
-                isOrganic = value;
+                setState(() {
+                  isOrganic = value;
+                });
               },
             ),
             SizedBox(height: 16),
@@ -157,7 +163,7 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
                     setState(() {});
                   }
                 } else {
-                  showSnackBar(context, "قم بإضافة صورة");
+                  showFalseSnackBar(context, errorMessage: "قم بإضافة صورة");
                 }
               },
 
@@ -167,15 +173,30 @@ class _AddNewProductViewBodyState extends State<AddNewProductViewBody> {
             SizedBox(height: 16),
             CustomButton(
               text: "لا ارغب",
+              onPressed: () {
+                resetForm();
+              },
               borderColor: ColorsData.kPrimaryColor,
               backgroundColor: Colors.transparent,
               textStyle: AppStyles.bold13.copyWith(
                 color: ColorsData.kPrimaryColor,
               ),
             ),
+            SizedBox(height: 16),
           ],
         ),
       ),
     );
+  }
+
+  void resetForm() {
+    _formKey.currentState?.reset();
+
+    setState(() {
+      fileImage = null;
+      isFeatured = false;
+      isOrganic = false;
+      autoValidateMode = AutovalidateMode.disabled;
+    });
   }
 }

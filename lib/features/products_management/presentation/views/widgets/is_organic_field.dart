@@ -4,29 +4,20 @@ import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_check_box.dart';
 
-class IsOrganicField extends StatefulWidget {
-  const IsOrganicField({super.key, required this.onChanged});
+class IsOrganicField extends StatelessWidget {
+  const IsOrganicField({
+    super.key,
+    required this.onChanged,
+    required this.isChecked,
+  });
   final ValueChanged<bool> onChanged;
 
-  @override
-  State<IsOrganicField> createState() => _IsOrganicFieldState();
-}
-
-class _IsOrganicFieldState extends State<IsOrganicField> {
-  bool isOrganic = false;
-
+  final bool isChecked;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomCheckBox(
-          isChecked: isOrganic,
-          onChecked: (bool value) {
-            isOrganic = value;
-            widget.onChanged(isOrganic);
-            setState(() {});
-          },
-        ),
+        CustomCheckBox(isChecked: isChecked, onChecked: onChanged),
         const SizedBox(width: kSizedBoxHeight16),
         Expanded(
           child: Text.rich(
