@@ -1,4 +1,6 @@
 import 'package:ecommerce_app_dashboard/core/enums/order_status_enum.dart';
+import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
+import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_entity.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/manager/cubits/update_orders_cubit/cubit/update_order_cubit.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,12 @@ class OrderActionButtons extends StatelessWidget {
                 orderID: orderEntity.orderID,
               );
             },
-            child: const Text('Accept'),
+            child: Text(
+              'قبول',
+              style: AppStyles.medium15.copyWith(
+                color: ColorsData.kPrimaryColor,
+              ),
+            ),
           ),
         ),
         Visibility(
@@ -35,7 +42,12 @@ class OrderActionButtons extends StatelessWidget {
                 orderID: orderEntity.orderID,
               );
             },
-            child: const Text('Reject'),
+            child: Text(
+              'رفض',
+              style: AppStyles.medium15.copyWith(
+                color: ColorsData.kSecondaryColor,
+              ),
+            ),
           ),
         ),
         Visibility(
@@ -47,7 +59,12 @@ class OrderActionButtons extends StatelessWidget {
                 orderID: orderEntity.orderID,
               );
             },
-            child: const Text('Delivered'),
+            child: Text(
+              'تسليم',
+              style: AppStyles.medium15.copyWith(
+                color: ColorsData.kPrimaryColor,
+              ),
+            ),
           ),
         ),
       ],
