@@ -48,4 +48,20 @@ class ProductsRepoImpl implements ProductsRepo {
       return left(ServerFailure(message: "Failed to get product!"));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> updateProduct({
+    required ProductEntity productEntity,
+    required String productCode,
+  }) async {
+    try {
+      await databaseService.updateData(
+        path: BackendBreakPoint.updateProducts,
+        data: ProductModel.fromEntity(productEntity).toJson(),
+      );
+      return Right(null);
+    } on Exception {
+      return Left(ServerFailure(message: "حدث خطأ في عملية تحديث المنتج"));
+    }
+  }
 }
