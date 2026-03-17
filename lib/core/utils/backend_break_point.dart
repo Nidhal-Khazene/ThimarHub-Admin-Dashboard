@@ -5,6 +5,7 @@ class BackendBreakPoint {
   static const checkIFUserExists = "users";
   static const productCollections = "products";
   static const getProducts = "products";
+  static const updateProducts = "products";
   static const getOrders = "orders";
   static const updateOrders = "orders";
 }
