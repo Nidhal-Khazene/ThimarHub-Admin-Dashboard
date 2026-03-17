@@ -5,7 +5,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/helper/get_dummy_products.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
-import '../../manager/cubits/products_cubit/products_cubit.dart';
+import '../../manager/cubits/get_products_cubit/products_cubit.dart';
 
 class ProductsGridViewBlocBuilder extends StatelessWidget {
   const ProductsGridViewBlocBuilder({super.key});

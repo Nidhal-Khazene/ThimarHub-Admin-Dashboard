@@ -3,7 +3,7 @@ import 'package:ecommerce_app_dashboard/features/products_management/presentatio
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../manager/cubits/products_cubit/products_cubit.dart';
+import '../../manager/cubits/get_products_cubit/products_cubit.dart';
 
 class ProductsManagementViewBody extends StatefulWidget {
   const ProductsManagementViewBody({super.key});

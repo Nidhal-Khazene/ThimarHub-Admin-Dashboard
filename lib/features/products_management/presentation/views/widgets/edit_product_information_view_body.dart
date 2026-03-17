@@ -16,6 +16,7 @@ class EditProductInformationViewBody extends StatefulWidget {
     super.key,
     required this.productEntity,
   });
+
   final ProductEntity productEntity;
 
   @override
@@ -26,20 +27,19 @@ class EditProductInformationViewBody extends StatefulWidget {
 class _EditProductInformationViewBodyState
     extends State<EditProductInformationViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-  late String productName, productCode, productDescription;
-  late num productPrice;
+  final GlobalKey<EditImageSectionState> imageKey = GlobalKey();
+  String? productName, productCode, productDescription;
+  num? productPrice;
   File? fileImage;
-  bool isFeatured = false;
-  bool isOrganic = false;
-  late int expirationsMonth, numberOfCalories, unitAmount;
+  bool? isFeatured;
+  bool? isOrganic;
+  int? expirationsMonth, numberOfCalories, unitAmount;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        autovalidateMode: autoValidateMode,
         child: Column(
           children: [
             CustomTextFormField(
@@ -117,7 +117,7 @@ class _EditProductInformationViewBodyState
             ),
             SizedBox(height: 16),
             IsFeaturedField(
-              isChecked: isFeatured,
+              isChecked: isFeatured ?? widget.productEntity.isFeatured,
               onChanged: (value) {
                 setState(() {
                   isFeatured = value;
@@ -126,7 +126,7 @@ class _EditProductInformationViewBodyState
             ),
             SizedBox(height: 8),
             IsOrganicField(
-              isChecked: isOrganic,
+              isChecked: isOrganic ?? widget.productEntity.isOrganic,
               onChanged: (value) {
                 setState(() {
                   isOrganic = value;
@@ -134,15 +134,41 @@ class _EditProductInformationViewBodyState
               },
             ),
             SizedBox(height: 8),
-            EditImageSection(productEntity: widget.productEntity),
+            EditImageSection(
+              key: imageKey,
+              productEntity: widget.productEntity,
+              onFileChanged: (image) {
+                fileImage = image;
+              },
+            ),
             SizedBox(height: 16),
             CustomButton(
-              text: "حفظ البيانات",
+              text: "تحديث البيانات",
+              onPressed: () {
+                _formKey.currentState!.save();
+                // ProductEntity addProductInputEntity = ProductEntity(
+                //   reviews: [],
+                //   productName: productName,
+                //   productCode: productCode,
+                //   productDescription: productDescription,
+                //   productPrice: productPrice,
+                //   fileImage: fileImage!,
+                //   isFeatured: isFeatured,
+                //   isOrganic: isOrganic,
+                //   unitAmount: unitAmount,
+                //   numberOfCalories: numberOfCalories,
+                //   expirationsMonth: expirationsMonth,
+                // );
+              },
               textStyle: AppStyles.bold13.copyWith(color: Colors.white),
             ),
             SizedBox(height: 16),
             CustomButton(
               text: "لا ارغب",
+              onPressed: () {
+                resetForm();
+                imageKey.currentState?.clearImage();
+              },
               borderColor: ColorsData.kPrimaryColor,
               backgroundColor: Colors.transparent,
               textStyle: AppStyles.bold13.copyWith(
@@ -153,5 +179,15 @@ class _EditProductInformationViewBodyState
         ),
       ),
     );
+  }
+
+  void resetForm() {
+    _formKey.currentState?.reset();
+
+    setState(() {
+      fileImage = null;
+      isFeatured = widget.productEntity.isFeatured;
+      isOrganic = widget.productEntity.isOrganic;
+    });
   }
 }

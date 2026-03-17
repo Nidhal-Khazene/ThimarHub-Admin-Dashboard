@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/product_entity.dart';
-import '../../manager/cubits/add_product_cubit/add_product_cubit.dart';
+import '../../manager/cubits/create_product_cubit/add_product_cubit.dart';
 import 'is_featured_field.dart';
 import 'is_organic_field.dart';
 
