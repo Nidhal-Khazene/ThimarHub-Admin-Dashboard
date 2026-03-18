@@ -21,4 +21,10 @@ class ImagesRepoImpl implements ImagesRepo {
       return Left(ServerFailure(message: "Failed to upload image!"));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> updateImage(File fileImage) {
+    // TODO: implement updateImage
+    throw UnimplementedError();
+  }
 }

@@ -46,4 +46,10 @@ class SupabaseStorageService implements StorageService {
 
     return publicUrl;
   }
+
+  @override
+  Future<void> updateFile(File file, String path) {
+    // TODO: implement updateFile
+    throw UnimplementedError();
+  }
 }

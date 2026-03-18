@@ -16,4 +16,10 @@ class FirebaseCloudStorage implements StorageService {
 
     return await fileRef.getDownloadURL();
   }
+
+  @override
+  Future<void> updateFile(File file, String path) {
+    // TODO: implement updateFile
+    throw UnimplementedError();
+  }
 }

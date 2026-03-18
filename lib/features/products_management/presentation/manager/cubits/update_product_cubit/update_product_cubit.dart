@@ -5,4 +5,8 @@ part 'update_product_state.dart';
 
 class UpdateProductCubit extends Cubit<UpdateProductState> {
   UpdateProductCubit() : super(UpdateProductInitial());
+
+  Future<void> updateProduct() async {
+    emit(UpdateProductLoading());
+  }
 }
