@@ -8,6 +8,7 @@ class ProductModel {
   final num productPrice;
   final bool isFeatured;
   final String? urlImage;
+  final String? imagePath;
   final int expirationsMonth;
   final bool isOrganic;
   final int numberOfCalories;
@@ -18,6 +19,7 @@ class ProductModel {
   final int sellingCount;
 
   ProductModel({
+    this.imagePath,
     this.sellingCount = 0,
     required this.reviews,
     this.avrRating = 0,

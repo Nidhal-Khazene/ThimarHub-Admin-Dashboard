@@ -4,8 +4,9 @@ import 'package:ecommerce_app_dashboard/features/products_management/domain/enti
 
 class ProductEntity {
   final String productName, productCode, productDescription;
-  String? urlImage;
   final num productPrice;
+  String? urlImage;
+  String? imagePath;
   final File? fileImage;
   final bool isFeatured;
   final int expirationsMonth;
@@ -31,5 +32,6 @@ class ProductEntity {
     required this.productPrice,
     this.fileImage,
     required this.isFeatured,
+    this.imagePath,
   });
 }
