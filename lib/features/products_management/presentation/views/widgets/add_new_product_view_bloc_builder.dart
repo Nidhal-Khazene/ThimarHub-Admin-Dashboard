@@ -1,8 +1,9 @@
+import 'package:ecommerce_app_dashboard/core/helper/show_false_snack_bar.dart';
+import 'package:ecommerce_app_dashboard/core/helper/show_true_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../../../../../core/helper/show_snack_bar.dart';
 import '../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../manager/cubits/create_product_cubit/add_product_cubit.dart';
 import 'add_new_product_view_body.dart';
@@ -25,10 +26,10 @@ class AddNewProductViewBlocBuilder extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is AddProductSuccess) {
-          showSnackBar(context, "تمت عملية إضافة المنتج بنجاح");
+          showTrueSnackBar(context, message: "تمت عملية إضافة المنتج بنجاح");
         }
         if (state is AddProductFailure) {
-          showSnackBar(context, "فشل عملية إضافة المنتج");
+          showFalseSnackBar(context, errorMessage: "فشل عملية إضافة المنتج");
         }
       },
     );
