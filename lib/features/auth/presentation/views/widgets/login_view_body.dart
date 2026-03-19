@@ -48,7 +48,7 @@ class LoginViewBody extends StatelessWidget {
                 children: [
                   TextSpan(
                     text:
-                        'يجب ان يكون لديك حساب مسوؤل من قبل ادارة البرنامج اذا كنت ترغب في تسجيل حساب مسوؤل ؟  ',
+                        'يجب ان يكون لديك حساب مسؤول من قبل ادارة البرنامج اذا كنت ترغب في تسجيل حساب مسؤول ؟  ',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 13,
@@ -58,7 +58,7 @@ class LoginViewBody extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: 'توصل معنا',
+                    text: 'تواصل معنا',
                     style: TextStyle(
                       color: const Color(0xFF1B5E37),
                       fontSize: 13,
