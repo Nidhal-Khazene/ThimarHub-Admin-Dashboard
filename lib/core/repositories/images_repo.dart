@@ -5,5 +5,8 @@ import 'package:ecommerce_app_dashboard/core/errors/failures.dart';
 
 abstract class ImagesRepo {
   Future<Either<Failure, Map<String, String>>> uploadImage(File fileImage);
-  Future<Either<Failure, void>> updateImage(File fileImage);
+  Future<Either<Failure, void>> updateImage({
+    required File fileImage,
+    required String imagePath,
+  });
 }

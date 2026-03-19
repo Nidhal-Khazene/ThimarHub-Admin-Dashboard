@@ -7,7 +7,9 @@ import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart
 import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_image_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../manager/cubits/update_product_cubit/update_product_cubit.dart';
 import 'is_featured_field.dart';
 import 'is_organic_field.dart';
 
@@ -52,7 +54,9 @@ class _EditProductInformationViewBodyState
             SizedBox(height: 8),
             CustomTextFormField(
               onSaved: (value) {
-                productPrice = num.parse(value!);
+                productPrice =
+                    num.tryParse(value ?? '') ??
+                    widget.productEntity.productPrice;
               },
               textInputType: TextInputType.number,
               hintText: "السعر: ${widget.productEntity.productPrice} دينار ",
@@ -73,7 +77,9 @@ class _EditProductInformationViewBodyState
                 Expanded(
                   child: CustomTextFormField(
                     onSaved: (value) {
-                      expirationsMonth = int.parse(value!);
+                      expirationsMonth =
+                          int.tryParse(value ?? '') ??
+                          widget.productEntity.expirationsMonth;
                     },
                     textInputType: TextInputType.number,
                     hintText: widget.productEntity.expirationsMonth.toString(),
@@ -87,7 +93,9 @@ class _EditProductInformationViewBodyState
                 Expanded(
                   child: CustomTextFormField(
                     onSaved: (value) {
-                      unitAmount = int.parse(value!);
+                      unitAmount =
+                          int.tryParse(value ?? '') ??
+                          widget.productEntity.unitAmount;
                     },
                     textInputType: TextInputType.number,
                     hintText: widget.productEntity.unitAmount.toString(),
@@ -97,7 +105,9 @@ class _EditProductInformationViewBodyState
                 Expanded(
                   child: CustomTextFormField(
                     onSaved: (value) {
-                      numberOfCalories = int.parse(value!);
+                      numberOfCalories =
+                          int.tryParse(value ?? '') ??
+                          widget.productEntity.numberOfCalories;
                     },
                     textInputType: TextInputType.number,
                     hintText: widget.productEntity.numberOfCalories.toString(),
@@ -146,19 +156,23 @@ class _EditProductInformationViewBodyState
               text: "تحديث البيانات",
               onPressed: () {
                 _formKey.currentState!.save();
-                // ProductEntity addProductInputEntity = ProductEntity(
-                //   reviews: [],
-                //   productName: productName,
-                //   productCode: productCode,
-                //   productDescription: productDescription,
-                //   productPrice: productPrice,
-                //   fileImage: fileImage!,
-                //   isFeatured: isFeatured,
-                //   isOrganic: isOrganic,
-                //   unitAmount: unitAmount,
-                //   numberOfCalories: numberOfCalories,
-                //   expirationsMonth: expirationsMonth,
-                // );
+                ProductEntity addProductInputEntity = ProductEntity(
+                  reviews: [],
+                  productName: widget.productEntity.productName,
+                  productCode: widget.productEntity.productCode,
+                  productDescription: widget.productEntity.productDescription,
+                  productPrice: widget.productEntity.productPrice,
+                  fileImage: fileImage ?? widget.productEntity.fileImage!,
+                  isFeatured: widget.productEntity.isFeatured,
+                  isOrganic: widget.productEntity.isOrganic,
+                  unitAmount: widget.productEntity.unitAmount,
+                  numberOfCalories: widget.productEntity.numberOfCalories,
+                  expirationsMonth: widget.productEntity.expirationsMonth,
+                );
+                context.read<UpdateProductCubit>().updateProduct(
+                  fileImage: addProductInputEntity.fileImage!,
+                  imagePath: widget.productEntity.imagePath!,
+                );
               },
               textStyle: AppStyles.bold13.copyWith(color: Colors.white),
             ),

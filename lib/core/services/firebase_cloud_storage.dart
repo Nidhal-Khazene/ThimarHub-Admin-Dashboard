@@ -13,7 +13,10 @@ class FirebaseCloudStorage implements StorageService {
 
     final fileRef = storageRef.child("$path/$fileName");
 
-    await fileRef.putFile(file, SettableMetadata(contentType: 'image/jpeg'));
+    await fileRef.putFile(
+      file,
+      SettableMetadata(contentType: getContentType(file)),
+    );
     final url = await fileRef.getDownloadURL();
     final imagePath = fileRef.fullPath;
 
@@ -21,8 +24,29 @@ class FirebaseCloudStorage implements StorageService {
   }
 
   @override
-  Future<void> updateFile(File file, String path) {
-    // TODO: implement updateFile
-    throw UnimplementedError();
+  Future<void> updateFile(File file, String path) async {
+    final fileRef = storageRef.child(path);
+
+    String contentType = getContentType(file);
+
+    await fileRef.putFile(file, SettableMetadata(contentType: contentType));
+  }
+
+  String getContentType(File file) {
+    final ext = p.extension(file.path).toLowerCase();
+
+    String contentType;
+    switch (ext) {
+      case '.png':
+        contentType = 'image/png';
+        break;
+      case '.jpg':
+      case '.jpeg':
+        contentType = 'image/jpeg';
+        break;
+      default:
+        contentType = 'application/octet-stream';
+    }
+    return contentType;
   }
 }

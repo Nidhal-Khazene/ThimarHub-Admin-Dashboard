@@ -20,13 +20,20 @@ class ImagesRepoImpl implements ImagesRepo {
       );
       return Right(imageInformation);
     } on Exception catch (_) {
-      return Left(ServerFailure(message: "Failed to upload image!"));
+      return Left(ServerFailure(message: "فشل رفع الصورة!"));
     }
   }
 
   @override
-  Future<Either<Failure, void>> updateImage(File fileImage) {
-    // TODO: implement updateImage
-    throw UnimplementedError();
+  Future<Either<Failure, void>> updateImage({
+    required File fileImage,
+    required String imagePath,
+  }) async {
+    try {
+      await storageService.updateFile(fileImage, imagePath);
+      return right(null);
+    } on Exception {
+      return left(ServerFailure(message: "فشل تحديث الصورة!"));
+    }
   }
 }
