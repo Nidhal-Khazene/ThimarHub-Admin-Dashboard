@@ -10,13 +10,15 @@ class ImagesRepoImpl implements ImagesRepo {
   final StorageService storageService;
   ImagesRepoImpl(this.storageService);
   @override
-  Future<Either<Failure, String>> uploadImage(File fileImage) async {
+  Future<Either<Failure, Map<String, String>>> uploadImage(
+    File fileImage,
+  ) async {
     try {
-      String url = await storageService.uploadFile(
+      Map<String, String> imageInformation = await storageService.uploadFile(
         fileImage,
         BackendBreakPoint.images,
       );
-      return Right(url);
+      return Right(imageInformation);
     } on Exception catch (_) {
       return Left(ServerFailure(message: "Failed to upload image!"));
     }

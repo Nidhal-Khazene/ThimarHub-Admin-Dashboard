@@ -35,7 +35,7 @@ class SupabaseStorageService implements StorageService {
   }
 
   @override
-  Future<String> uploadFile(File file, String path) async {
+  Future<Map<String, String>> uploadFile(File file, String path) async {
     final fileName = p.basename(file.path);
     await _supabase.client.storage
         .from(BackendBreakPoint.images)
@@ -43,8 +43,9 @@ class SupabaseStorageService implements StorageService {
     final String publicUrl = _supabase.client.storage
         .from(BackendBreakPoint.images)
         .getPublicUrl("$path/$fileName");
+    final String imagePath = "$path/$fileName";
 
-    return publicUrl;
+    return {"url": publicUrl, "imagePath": imagePath};
   }
 
   @override

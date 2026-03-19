@@ -6,15 +6,18 @@ import 'package:path/path.dart' as p;
 
 class FirebaseCloudStorage implements StorageService {
   final storageRef = FirebaseStorage.instance.ref();
+
   @override
-  Future<String> uploadFile(File file, String path) async {
+  Future<Map<String, String>> uploadFile(File file, String path) async {
     final fileName = p.basename(file.path);
 
     final fileRef = storageRef.child("$path/$fileName");
 
     await fileRef.putFile(file, SettableMetadata(contentType: 'image/jpeg'));
+    final url = await fileRef.getDownloadURL();
+    final imagePath = fileRef.fullPath;
 
-    return await fileRef.getDownloadURL();
+    return {"url": url, "imagePath": imagePath};
   }
 
   @override
