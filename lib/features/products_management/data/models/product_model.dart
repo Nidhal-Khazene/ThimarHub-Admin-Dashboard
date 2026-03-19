@@ -45,6 +45,7 @@ class ProductModel {
       productPrice: entity.productPrice,
       isFeatured: entity.isFeatured,
       urlImage: entity.urlImage,
+      imagePath: entity.imagePath,
       expirationsMonth: entity.expirationsMonth,
       isOrganic: entity.isOrganic,
       numberOfCalories: entity.numberOfCalories,
@@ -66,6 +67,7 @@ class ProductModel {
       productDescription: productDescription,
       productPrice: productPrice,
       urlImage: urlImage,
+      imagePath: imagePath,
       isFeatured: isFeatured,
     );
   }
@@ -87,6 +89,7 @@ class ProductModel {
       productPrice: json["productPrice"] ?? 0,
       isFeatured: json["isFeatured"] ?? false,
       urlImage: json["urlImage"],
+      imagePath: json["imagePath"],
       isOrganic: json["isOrganic"] ?? false,
       avrRating: json["avrRating"] ?? 0,
       ratingCount: json["ratingCount"] ?? 0,
@@ -102,6 +105,7 @@ class ProductModel {
       "productPrice": productPrice,
       "isFeatured": isFeatured,
       "urlImage": urlImage,
+      "imagePath": imagePath,
       "expirationsMonth": expirationsMonth,
       "isOrganic": isOrganic,
       "numberOfCalories": numberOfCalories,
