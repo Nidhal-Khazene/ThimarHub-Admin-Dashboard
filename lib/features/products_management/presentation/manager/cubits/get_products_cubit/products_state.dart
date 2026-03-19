@@ -7,6 +7,8 @@ final class ProductsInitial extends ProductsState {}
 
 final class ProductsLoading extends ProductsState {}
 
+final class ProductsEmpty extends ProductsState {}
+
 final class ProductsFailure extends ProductsState {
   final String errMessage;
 
