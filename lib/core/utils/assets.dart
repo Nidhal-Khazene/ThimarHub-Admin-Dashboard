@@ -12,6 +12,8 @@ class Assets {
 
   static const String imagesHelperFalseIcon = "assets/images/helper/false_icon.svg";
 
+  static const String imagesHelperNoData = "assets/images/helper/no_data.svg";
+
   static const String imagesHelperTrueCircleContainer = "assets/images/helper/true_circle_container.svg";
 
   static const String imagesProductsAnanas = "assets/images/products/ananas.png";
