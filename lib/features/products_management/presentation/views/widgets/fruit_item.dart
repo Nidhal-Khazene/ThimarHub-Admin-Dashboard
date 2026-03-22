@@ -1,6 +1,5 @@
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_product_information_view.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/colors_data.dart';
@@ -29,18 +28,18 @@ class FruitItem extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Positioned(
-              top: 0,
-              right: 0,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Iconsax.heart_copy,
-                  color: Color(0xFF292D32),
-                  size: 16,
-                ),
-              ),
-            ),
+            // Positioned(
+            //   top: 0,
+            //   right: 0,
+            //   child: IconButton(
+            //     onPressed: () {},
+            //     icon: const Icon(
+            //       Iconsax.heart_copy,
+            //       color: Color(0xFF292D32),
+            //       size: 16,
+            //     ),
+            //   ),
+            // ),
             Positioned.fill(
               child: Column(
                 children: [
@@ -48,7 +47,8 @@ class FruitItem extends StatelessWidget {
                   productEntity.urlImage != null
                       ? Flexible(
                           child: CustomImageNetwork(
-                            urlImage: productEntity.urlImage!,
+                            urlImage:
+                                "${productEntity.urlImage!}?v=${DateTime.now().millisecondsSinceEpoch}",
                           ),
                         )
                       : Flexible(
