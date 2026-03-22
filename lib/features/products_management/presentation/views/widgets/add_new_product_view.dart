@@ -1,8 +1,8 @@
 import 'package:ecommerce_app_dashboard/constants.dart';
 import 'package:ecommerce_app_dashboard/core/helper/build_app_bar.dart';
-import 'package:ecommerce_app_dashboard/core/repositories/images_repo.dart';
 import 'package:ecommerce_app_dashboard/core/repositories/product_repo.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/images_repo.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_new_product_view_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

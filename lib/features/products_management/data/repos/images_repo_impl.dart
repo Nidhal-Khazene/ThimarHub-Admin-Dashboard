@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app_dashboard/core/errors/failures.dart';
-import 'package:ecommerce_app_dashboard/core/repositories/images_repo.dart';
 import 'package:ecommerce_app_dashboard/core/services/storage_service.dart';
 import 'package:ecommerce_app_dashboard/core/utils/backend_break_point.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/images_repo.dart';
 
 class ImagesRepoImpl implements ImagesRepo {
   final StorageService storageService;

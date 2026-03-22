@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app_dashboard/core/repositories/images_repo.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/images_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'update_product_state.dart';

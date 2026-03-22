@@ -8,10 +8,10 @@ import 'package:ecommerce_app_dashboard/features/orders/data/repos/orders_repo_i
 import 'package:ecommerce_app_dashboard/features/orders/domain/repos/orders_repo.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/products_management/data/repos/images_repo_impl.dart';
 import '../../features/products_management/data/repos/products_repo_impl.dart';
+import '../../features/products_management/domain/repos/images_repo.dart';
 import '../../features/products_management/domain/repos/products_repo.dart';
-import '../repositories/images_repo.dart';
-import '../repositories/images_repo_impl.dart';
 
 final getIt = GetIt.instance;
 
