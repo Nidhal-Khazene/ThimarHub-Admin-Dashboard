@@ -19,10 +19,11 @@ class ProductRepoImpl implements ProductRepo {
       await databaseService.addData(
         path: BackendBreakPoint.productCollections,
         data: ProductModel.fromEntity(addProductInputEntity).toJson(),
+        documentId: addProductInputEntity.productCode,
       );
       return const Right(unit);
     } catch (e) {
-      return Left(ServerFailure(message: "Failed to add product"));
+      return Left(ServerFailure(message: "فشل اضافة المنتج"));
     }
   }
 }

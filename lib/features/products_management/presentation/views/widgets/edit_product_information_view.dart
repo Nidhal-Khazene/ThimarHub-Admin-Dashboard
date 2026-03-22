@@ -3,6 +3,7 @@ import 'package:ecommerce_app_dashboard/core/helper/build_app_bar.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/images_repo.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/products_repo.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/manager/cubits/update_product_cubit/update_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +34,10 @@ class EditProductInformationView extends StatelessWidget {
         child: Padding(
           padding: kPrimaryScreenPadding,
           child: BlocProvider(
-            create: (context) => UpdateProductCubit(getIt<ImagesRepo>()),
+            create: (context) => UpdateProductCubit(
+              imagesRepo: getIt<ImagesRepo>(),
+              productRepo: getIt<ProductsRepo>(),
+            ),
             child: EditProductViewBlocBuilder(productEntity: productEntity),
           ),
         ),

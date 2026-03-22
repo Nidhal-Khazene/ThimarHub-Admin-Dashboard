@@ -45,7 +45,7 @@ class ProductsRepoImpl implements ProductsRepo {
           .toList();
       return right(products);
     } catch (e) {
-      return left(ServerFailure(message: "Failed to get product!"));
+      return left(ServerFailure(message: "فشل الحصول على المنتجات"));
     }
   }
 
@@ -58,6 +58,7 @@ class ProductsRepoImpl implements ProductsRepo {
       await databaseService.updateData(
         path: BackendBreakPoint.updateProducts,
         data: ProductModel.fromEntity(productEntity).toJson(),
+        documentId: productCode,
       );
       return Right(null);
     } on Exception {
