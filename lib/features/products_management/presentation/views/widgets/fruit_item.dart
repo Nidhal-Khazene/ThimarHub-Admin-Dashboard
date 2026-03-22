@@ -6,20 +6,29 @@ import '../../../../../core/utils/colors_data.dart';
 import '../../../../../core/widgets/custom_image_network.dart';
 import '../../../domain/entities/product_entity.dart';
 
-class FruitItem extends StatelessWidget {
+class FruitItem extends StatefulWidget {
   const FruitItem({super.key, required this.productEntity});
 
   final ProductEntity productEntity;
 
   @override
+  State<FruitItem> createState() => _FruitItemState();
+}
+
+class _FruitItemState extends State<FruitItem> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(
+      onTap: () async {
+        final result = await Navigator.pushNamed(
           context,
           EditProductInformationView.routeName,
-          arguments: productEntity,
+          arguments: widget.productEntity,
         );
+
+        if (result == true) {
+          setState(() {});
+        }
       },
       child: Container(
         decoration: ShapeDecoration(
@@ -44,11 +53,11 @@ class FruitItem extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 17),
-                  productEntity.urlImage != null
+                  widget.productEntity.urlImage != null
                       ? Flexible(
                           child: CustomImageNetwork(
                             urlImage:
-                                "${productEntity.urlImage!}?v=${DateTime.now().millisecondsSinceEpoch}",
+                                "${widget.productEntity.urlImage!}?v=${DateTime.now().millisecondsSinceEpoch}",
                           ),
                         )
                       : Flexible(
@@ -61,14 +70,14 @@ class FruitItem extends StatelessWidget {
                   const SizedBox(height: 24),
                   ListTile(
                     title: Text(
-                      productEntity.productName,
+                      widget.productEntity.productName,
                       style: AppStyles.semiBold13,
                     ),
                     subtitle: Text.rich(
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: '${productEntity.productPrice}دينار ',
+                            text: '${widget.productEntity.productPrice}دينار ',
                             style: AppStyles.bold13.copyWith(
                               color: ColorsData.kSecondaryColor,
                             ),
