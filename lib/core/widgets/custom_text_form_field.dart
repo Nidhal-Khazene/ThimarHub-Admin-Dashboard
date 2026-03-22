@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     this.borderWidth,
     this.maxLines = 1,
     this.hintPadding,
+    this.initialValue,
   });
 
   final String hintText;
@@ -30,10 +31,12 @@ class CustomTextFormField extends StatelessWidget {
   final double? borderWidth;
   final int? maxLines;
   final EdgeInsetsGeometry? hintPadding;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       maxLines: maxLines,
       obscureText: obscureText,
       onSaved: onSaved,
