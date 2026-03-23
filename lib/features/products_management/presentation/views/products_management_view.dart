@@ -2,6 +2,8 @@ import 'package:ecommerce_app_dashboard/constants.dart';
 import 'package:ecommerce_app_dashboard/core/helper/build_app_bar.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/images_repo.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/presentation/manager/cubits/remove_product_cubit/remove_product_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/add_new_product_view.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/products_management_view_body.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +33,18 @@ class ProductsManagementView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: kPrimaryScreenPadding,
-          child: BlocProvider(
-            create: (context) => ProductsCubit(getIt<ProductsRepo>()),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => ProductsCubit(getIt<ProductsRepo>()),
+              ),
+              BlocProvider(
+                create: (context) => RemoveProductCubit(
+                  getIt<ImagesRepo>(),
+                  getIt<ProductsRepo>(),
+                ),
+              ),
+            ],
             child: ProductsManagementViewBody(),
           ),
         ),
