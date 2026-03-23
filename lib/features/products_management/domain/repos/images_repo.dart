@@ -9,4 +9,5 @@ abstract class ImagesRepo {
     required File fileImage,
     required String imagePath,
   });
+  Future<Either<Failure, void>> deleteImage(String imagePath);
 }

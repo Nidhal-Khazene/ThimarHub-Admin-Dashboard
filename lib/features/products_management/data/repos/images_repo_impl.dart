@@ -36,4 +36,14 @@ class ImagesRepoImpl implements ImagesRepo {
       return left(ServerFailure(message: "فشل تحديث الصورة!"));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteImage(String imagePath) async {
+    try {
+      await storageService.deleteFile(imagePath);
+      return right(null);
+    } on Exception catch (e) {
+      return left(ServerFailure(message: "فشل حذف الصورة!"));
+    }
+  }
 }
