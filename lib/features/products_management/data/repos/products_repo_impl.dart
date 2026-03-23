@@ -67,8 +67,17 @@ class ProductsRepoImpl implements ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteProduct({required String productCode}) {
-    // TODO: implement deleteProduct
-    throw UnimplementedError();
+  Future<Either<Failure, void>> deleteProduct({
+    required String productCode,
+  }) async {
+    try {
+      await databaseService.deleteData(
+        path: BackendBreakPoint.deleteProducts,
+        documentId: productCode,
+      );
+      return right(null);
+    } on Exception catch (e) {
+      return left(ServerFailure(message: "فشل حذف المنتج!"));
+    }
   }
 }
