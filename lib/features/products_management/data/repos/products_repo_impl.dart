@@ -65,4 +65,10 @@ class ProductsRepoImpl implements ProductsRepo {
       return Left(ServerFailure(message: "حدث خطأ في عملية تحديث المنتج"));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteProduct({required String productCode}) {
+    // TODO: implement deleteProduct
+    throw UnimplementedError();
+  }
 }

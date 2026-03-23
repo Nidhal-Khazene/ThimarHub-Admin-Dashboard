@@ -11,4 +11,5 @@ abstract class ProductsRepo {
     required ProductEntity productEntity,
     required String productCode,
   });
+  Future<Either<Failure, void>> deleteProduct({required String productCode});
 }
