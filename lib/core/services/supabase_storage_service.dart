@@ -53,4 +53,10 @@ class SupabaseStorageService implements StorageService {
     // TODO: implement updateFile
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> deleteFile(String path) {
+    // TODO: implement deleteFile
+    throw UnimplementedError();
+  }
 }

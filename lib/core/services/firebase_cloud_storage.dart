@@ -49,4 +49,11 @@ class FirebaseCloudStorage implements StorageService {
     }
     return contentType;
   }
+
+  @override
+  Future<void> deleteFile(String path) {
+    final fileRef = storageRef.child(path);
+
+    return fileRef.delete();
+  }
 }
