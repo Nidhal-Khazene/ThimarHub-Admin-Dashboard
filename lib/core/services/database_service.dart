@@ -26,4 +26,6 @@ abstract class DatabaseService {
     required String documentId,
     required String path,
   });
+
+  Future<void> deleteData({required String path, required String documentId});
 }
