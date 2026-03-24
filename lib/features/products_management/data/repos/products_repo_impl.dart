@@ -13,24 +13,35 @@ class ProductsRepoImpl implements ProductsRepo {
   ProductsRepoImpl({required this.databaseService});
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getBestSellingProducts() async {
+  Future<Either<Failure, Unit>> addProduct(
+    ProductEntity addProductInputEntity,
+  ) async {
     try {
-      var data =
-          await databaseService.getData(
-                path: BackendBreakPoint.getProducts,
-                query: {
-                  'limit': 10,
-                  'orderBy': 'sellingCount',
-                  'descending': true,
-                },
-              )
-              as List<Map<String, dynamic>>;
-      List<ProductEntity> products = data
-          .map((e) => ProductModel.fromJson(e).toEntity())
-          .toList();
-      return right(products);
+      await databaseService.addData(
+        path: BackendBreakPoint.productCollections,
+        data: ProductModel.fromEntity(addProductInputEntity).toJson(),
+        documentId: addProductInputEntity.productCode,
+      );
+      return const Right(unit);
     } catch (e) {
-      return left(ServerFailure(message: "Failed to get product!"));
+      return Left(ServerFailure(message: "فشل اضافة المنتج"));
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<ProductEntity>>> getBestSellingProducts() async* {
+    try {
+      await for (var data in databaseService.streamData(
+        path: BackendBreakPoint.getProducts,
+        query: {'limit': 10, 'orderBy': 'sellingCount', 'descending': true},
+      )) {
+        List<ProductEntity> products = (data as List<dynamic>)
+            .map<ProductEntity>((e) => ProductModel.fromJson(e).toEntity())
+            .toList();
+        yield right(products);
+      }
+    } catch (e) {
+      yield left(ServerFailure(message: "Failed to get product!"));
     }
   }
 

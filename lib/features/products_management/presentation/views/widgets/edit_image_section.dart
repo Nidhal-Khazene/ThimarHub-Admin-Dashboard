@@ -88,8 +88,7 @@ class EditImageSectionState extends State<EditImageSection> {
                         child: Image.file(fileImage!, height: 155, width: 130),
                       )
                     : CustomImageNetwork(
-                        urlImage:
-                            "${widget.productEntity.urlImage!}?v=${DateTime.now().millisecondsSinceEpoch}",
+                        urlImage: widget.productEntity.urlImage!,
                         width: 124,
                         height: 124,
                       ),

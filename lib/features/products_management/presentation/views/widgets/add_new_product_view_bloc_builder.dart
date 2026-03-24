@@ -27,9 +27,11 @@ class AddNewProductViewBlocBuilder extends StatelessWidget {
       listener: (context, state) {
         if (state is AddProductSuccess) {
           showTrueSnackBar(context, message: "تمت عملية إضافة المنتج بنجاح");
+          Navigator.pop(context);
         }
         if (state is AddProductFailure) {
           showFalseSnackBar(context, errorMessage: "فشل عملية إضافة المنتج");
+          Navigator.pop(context);
         }
       },
     );

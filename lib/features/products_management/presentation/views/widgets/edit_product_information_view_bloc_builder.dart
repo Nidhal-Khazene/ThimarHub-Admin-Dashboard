@@ -28,9 +28,11 @@ class EditProductViewBlocBuilder extends StatelessWidget {
       listener: (context, state) {
         if (state is UpdateProductSuccess) {
           showTrueSnackBar(context, message: "تمت عملية تحديث المنتج بنجاح");
+          Navigator.pop(context);
         }
         if (state is UpdateProductFailure) {
           showFalseSnackBar(context, errorMessage: "فشل عملية تحديث المنتج");
+          Navigator.pop(context);
         }
       },
     );

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -9,6 +11,7 @@ part 'products_state.dart';
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit(this.productsRepo) : super(ProductsInitial());
   final ProductsRepo productsRepo;
+  StreamSubscription? _streamSubscription;
 
   Future<void> getProducts() async {
     emit(ProductsLoading());
@@ -19,19 +22,21 @@ class ProductsCubit extends Cubit<ProductsState> {
     );
   }
 
-  Future<void> getBestSellingProducts() async {
+  void getBestSellingProducts() {
     emit(ProductsLoading());
-    var result = await productsRepo.getBestSellingProducts();
-
-    result.fold(
-      (failure) => emit(ProductsFailure(errMessage: failure.message)),
-      (products) {
-        if (products.isEmpty) {
-          emit(ProductsEmpty());
-        } else {
-          emit(ProductsSuccess(products: products));
-        }
-      },
-    );
+    _streamSubscription = productsRepo.getBestSellingProducts().listen((
+      result,
+    ) {
+      result.fold(
+        (failure) => emit(ProductsFailure(errMessage: failure.message)),
+        (products) {
+          if (products.isEmpty) {
+            emit(ProductsEmpty());
+          } else {
+            emit(ProductsSuccess(products: products));
+          }
+        },
+      );
+    });
   }
 }

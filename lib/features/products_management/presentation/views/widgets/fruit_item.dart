@@ -38,19 +38,14 @@ class _FruitItemState extends State<FruitItem> {
                     ? Flexible(
                         child: GestureDetector(
                           onTap: () async {
-                            final result = await Navigator.pushNamed(
+                            await Navigator.pushNamed(
                               context,
                               EditProductInformationView.routeName,
                               arguments: widget.productEntity,
                             );
-
-                            if (result == true) {
-                              setState(() {});
-                            }
                           },
                           child: CustomImageNetwork(
-                            urlImage:
-                                "${widget.productEntity.urlImage!}?v=${DateTime.now().millisecondsSinceEpoch}",
+                            urlImage: "${widget.productEntity.urlImage!}}",
                           ),
                         ),
                       )

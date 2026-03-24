@@ -221,6 +221,10 @@ class _EditProductInformationViewBodyState
       fileImage = null;
       isFeatured = widget.productEntity.isFeatured;
       isOrganic = widget.productEntity.isOrganic;
+      productCode = widget.productEntity.productCode;
+      productDescription = widget.productEntity.productDescription;
+      productPrice = widget.productEntity.productPrice;
+      productName = widget.productEntity.productName;
     });
   }
 }

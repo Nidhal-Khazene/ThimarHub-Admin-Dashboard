@@ -1,17 +1,17 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app_dashboard/core/repositories/product_repo.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/images_repo.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/domain/repos/products_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'add_product_state.dart';
 
 class AddProductCubit extends Cubit<AddProductState> {
-  AddProductCubit({required this.imagesRepo, required this.productRepo})
+  AddProductCubit({required this.imagesRepo, required this.productsRepo})
     : super(AddProductInitial());
 
   final ImagesRepo imagesRepo;
-  final ProductRepo productRepo;
+  final ProductsRepo productsRepo;
 
   Future<void> addProduct(ProductEntity addProductInputEntity) async {
     emit(AddProductLoading());
@@ -28,7 +28,7 @@ class AddProductCubit extends Cubit<AddProductState> {
         addProductInputEntity.urlImage = imageInformation["url"];
         addProductInputEntity.imagePath = imageInformation["imagePath"];
 
-        final productResult = await productRepo.addProduct(
+        final productResult = await productsRepo.addProduct(
           addProductInputEntity,
         );
 
