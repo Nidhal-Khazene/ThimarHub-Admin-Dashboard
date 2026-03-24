@@ -40,8 +40,8 @@ class ProductsManagementView extends StatelessWidget {
               ),
               BlocProvider(
                 create: (context) => RemoveProductCubit(
-                  getIt<ImagesRepo>(),
-                  getIt<ProductsRepo>(),
+                  imagesRepo: getIt<ImagesRepo>(),
+                  productsRepo: getIt<ProductsRepo>(),
                 ),
               ),
             ],

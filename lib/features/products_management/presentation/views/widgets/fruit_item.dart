@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:ecommerce_app_dashboard/core/helper/show_false_snack_bar.dart';
+import 'package:ecommerce_app_dashboard/core/helper/show_true_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_product_information_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +25,9 @@ class FruitItem extends StatefulWidget {
 class _FruitItemState extends State<FruitItem> {
   @override
   Widget build(BuildContext context) {
+    log(widget.productEntity.productCode);
+    log(widget.productEntity.imagePath ?? "null");
+
     return Container(
       decoration: ShapeDecoration(
         color: const Color(0xFFF3F5F7),
@@ -28,19 +35,6 @@ class _FruitItemState extends State<FruitItem> {
       ),
       child: Stack(
         children: [
-          Positioned(
-            bottom: 30,
-            left: 0,
-            child: IconButton(
-              onPressed: () {
-                context.read<RemoveProductCubit>().removeProduct(
-                  productCode: widget.productEntity.productCode,
-                  imagePath: widget.productEntity.imagePath!,
-                );
-              },
-              icon: Icon(Iconsax.trash, color: Colors.redAccent, size: 24),
-            ),
-          ),
           Positioned.fill(
             child: Column(
               children: [
@@ -99,6 +93,56 @@ class _FruitItemState extends State<FruitItem> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            bottom: 30,
+            left: 0,
+            child: BlocConsumer<RemoveProductCubit, RemoveProductState>(
+              builder: (context, state) {
+                if (state is RemoveProductLoading) {
+                  return Container(
+                    padding: EdgeInsets.all(12),
+                    child: SizedBox(
+                      height: 24,
+                      width: 24,
+                      child: CircularProgressIndicator(
+                        color: ColorsData.kLightPrimaryColor,
+                        strokeWidth: 2,
+                      ),
+                    ),
+                  );
+                }
+                return IconButton(
+                  onPressed: () {
+                    context.read<RemoveProductCubit>().removeProduct(
+                      productCode: widget.productEntity.productCode,
+                      imagePath: widget.productEntity.imagePath!,
+                    );
+                  },
+                  icon: const Icon(
+                    Iconsax.trash,
+                    color: Colors.redAccent,
+                    size: 24,
+                  ),
+                );
+              },
+              listener: (context, state) {
+                if (state is RemoveProductSuccess) {
+                  showTrueSnackBar(
+                    context,
+                    message: "نجاح حذف المنتج",
+                    secondsDuration: 2,
+                  );
+                }
+                if (state is RemoveProductFailure) {
+                  showFalseSnackBar(
+                    context,
+                    errorMessage: "فشل حذف المنتج",
+                    secondsDuration: 2,
+                  );
+                }
+              },
             ),
           ),
         ],

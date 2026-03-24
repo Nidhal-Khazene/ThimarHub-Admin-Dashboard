@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 part 'remove_product_state.dart';
 
 class RemoveProductCubit extends Cubit<RemoveProductState> {
-  RemoveProductCubit(this.imagesRepo, this.productsRepo)
+  RemoveProductCubit({required this.imagesRepo, required this.productsRepo})
     : super(RemoveProductInitial());
   final ImagesRepo imagesRepo;
   final ProductsRepo productsRepo;
