@@ -18,7 +18,13 @@ class FetchOrdersCubit extends Cubit<FetchOrdersState> {
     _streamSubscription = ordersRepo.fetchOrders().listen((result) {
       result.fold(
         (failure) => emit(FetchOrdersFailure(errorMessage: failure.message)),
-        (orders) => emit(FetchOrdersSuccess(orders: orders)),
+        (orders) {
+          if (orders.isEmpty) {
+            emit(FetchOrdersEmpty());
+          } else {
+            emit(FetchOrdersSuccess(orders: orders));
+          }
+        },
       );
     });
   }

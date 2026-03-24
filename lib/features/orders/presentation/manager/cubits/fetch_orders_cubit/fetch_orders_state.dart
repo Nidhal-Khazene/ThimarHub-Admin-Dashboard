@@ -7,6 +7,8 @@ final class FetchOrdersInitial extends FetchOrdersState {}
 
 final class FetchOrdersLoading extends FetchOrdersState {}
 
+final class FetchOrdersEmpty extends FetchOrdersState {}
+
 final class FetchOrdersFailure extends FetchOrdersState {
   final String errorMessage;
 

@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_dashboard/core/helper/get_dummy_order.dart';
+import 'package:ecommerce_app_dashboard/core/widgets/custom_empty_data_image.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/update_order_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +34,8 @@ class _OrderViewBodyBlocBuilderState extends State<OrderViewBodyBlocBuilder> {
           );
         } else if (state is FetchOrdersFailure) {
           return CustomErrorWidget(text: state.errorMessage);
+        } else if (state is FetchOrdersEmpty) {
+          return CustomEmptyDataImage();
         } else {
           return Skeletonizer(child: OrdersViewBody(orders: [getDummyOrder()]));
         }
