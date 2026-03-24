@@ -5,7 +5,6 @@ import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_image_network.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../domain/entities/product_entity.dart';
@@ -93,16 +92,16 @@ class EditImageSectionState extends State<EditImageSection> {
                         height: 124,
                       ),
               ),
-              Positioned(
-                top: 5,
-                left: 0,
-                child: GestureDetector(
-                  onTap: () {
-                    clearImage();
-                  },
-                  child: Icon(Iconsax.gallery_remove_copy),
-                ),
-              ),
+              // Positioned(
+              //   top: 5,
+              //   left: 0,
+              //   child: GestureDetector(
+              //     onTap: () {
+              //       clearImage();
+              //     },
+              //     child: Icon(Iconsax.gallery_remove_copy),
+              //   ),
+              // ),
             ],
           ),
         ),

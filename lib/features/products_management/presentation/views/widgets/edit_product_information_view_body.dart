@@ -188,9 +188,9 @@ class _EditProductInformationViewBodyState
                   urlImage: widget.productEntity.urlImage,
                 );
                 context.read<UpdateProductCubit>().updateProduct(
-                  addProductInputEntity: addProductInputEntity,
-                  fileImage: addProductInputEntity.fileImage!,
-                  imagePath: widget.productEntity.imagePath!,
+                  product: addProductInputEntity,
+                  fileImage: addProductInputEntity.fileImage,
+                  imagePath: widget.productEntity.imagePath,
                 );
               },
               textStyle: AppStyles.bold13.copyWith(color: Colors.white),
