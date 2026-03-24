@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ecommerce_app_dashboard/core/helper/show_false_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/core/helper/show_true_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_product_information_view.dart';
@@ -25,9 +23,6 @@ class FruitItem extends StatefulWidget {
 class _FruitItemState extends State<FruitItem> {
   @override
   Widget build(BuildContext context) {
-    log(widget.productEntity.productCode);
-    log(widget.productEntity.imagePath ?? "null");
-
     return Container(
       decoration: ShapeDecoration(
         color: const Color(0xFFF3F5F7),
