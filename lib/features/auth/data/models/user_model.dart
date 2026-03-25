@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/features/auth/domain/entities/user_entity.dart';
+import 'package:ecommerce_app_dashboard/features/auth/domain/entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel extends UserEntity {
@@ -23,7 +23,7 @@ class UserModel extends UserEntity {
       name: json['name'],
       email: json['email'],
       userId: json['userId'],
-      isAdmin: json['isAdmin'],
+      isAdmin: json['isAdmin'] ?? false,
     );
   }
 
