@@ -1,6 +1,9 @@
 import 'package:ecommerce_app_dashboard/core/routing/on_generate_route.dart';
 import 'package:ecommerce_app_dashboard/core/services/custom_bloc_observer.dart';
+import 'package:ecommerce_app_dashboard/core/services/firebase_auth_services.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
+import 'package:ecommerce_app_dashboard/core/services/shared_preferences_singleton.dart';
+import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:ecommerce_app_dashboard/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await SupabaseStorageService.initSupabase();
   // SupabaseStorageService.createBucket(bucketName: BackendBreakPoint.images);
+  await SharedPreferencesSingleton.init();
   Bloc.observer = CustomBlocObserver();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setupGetIt();
@@ -50,7 +54,15 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoutes,
-      initialRoute: LoginView.routeName,
+      initialRoute: getInitialRoute(),
     );
+  }
+
+  String getInitialRoute() {
+    if (FirebaseAuthService.isLoggedIn()) {
+      return DashboardView.routeName;
+    } else {
+      return LoginView.routeName;
+    }
   }
 }

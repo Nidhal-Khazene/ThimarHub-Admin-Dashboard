@@ -1,78 +1,115 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
-import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
-import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-class LoginViewBody extends StatelessWidget {
+import '../../../../../core/utils/colors_data.dart';
+import '../../../../../core/widgets/custom_button.dart';
+import '../../manager/sign_in_cubit/sign_in_cubit.dart';
+
+class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
+
+  @override
+  State<LoginViewBody> createState() => _LoginViewBodyState();
+}
+
+class _LoginViewBodyState extends State<LoginViewBody> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  late String emailAddress;
+  late String password;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          SizedBox(height: 24),
-          CustomTextFormField(hintText: "البريد الإلكتروني"),
-          SizedBox(height: 16),
-          CustomTextFormField(
-            hintText: "كلمة المرور",
-            suffixIcon: Padding(
-              padding: EdgeInsets.only(left: 31),
-              child: Icon(Iconsax.eye),
+      child: Form(
+        key: formKey,
+        autovalidateMode: autovalidateMode,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SizedBox(height: 24),
+            CustomTextFormField(
+              hintText: "البريد الإلكتروني",
+              textInputType: TextInputType.emailAddress,
+              onSaved: (value) {
+                emailAddress = value!;
+              },
             ),
-          ),
-          SizedBox(height: 16),
-          Text(
-            'نسيت كلمة المرور؟',
-            style: AppStyles.semiBold13.copyWith(
-              color: const Color(0xFF2D9F5D),
-            ),
-          ),
-          SizedBox(height: 20),
-          CustomButton(
-            text: "تسجيل دخول",
-            onPressed: () {
-              Navigator.pushNamed(context, DashboardView.routeName);
-            },
-            backgroundColor: ColorsData.kLightPrimaryColor,
-          ),
-          SizedBox(height: 37),
-          SizedBox(
-            width: double.infinity,
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text:
-                        'يجب ان يكون لديك حساب مسؤول من قبل ادارة البرنامج اذا كنت ترغب في تسجيل حساب مسؤول ؟  ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontFamily: 'Cairo',
-                      fontWeight: FontWeight.w600,
-                      height: 2.46,
-                    ),
-                  ),
-                  TextSpan(
-                    text: 'تواصل معنا',
-                    style: TextStyle(
-                      color: const Color(0xFF1B5E37),
-                      fontSize: 13,
-                      fontFamily: 'Cairo',
-                      fontWeight: FontWeight.w600,
-                      height: 2.46,
-                    ),
-                  ),
-                ],
+            SizedBox(height: 16),
+            CustomTextFormField(
+              onSaved: (value) {
+                password = value!;
+              },
+              textInputType: TextInputType.text,
+              hintText: "كلمة المرور",
+              obscureText: ,
+              suffixIcon: Padding(
+                padding: EdgeInsets.only(left: 31),
+                child: Icon(Iconsax.eye),
               ),
-              textAlign: TextAlign.right,
             ),
-          ),
-        ],
+            SizedBox(height: 16),
+            Text(
+              'نسيت كلمة المرور؟',
+              style: AppStyles.semiBold13.copyWith(
+                color: const Color(0xFF2D9F5D),
+              ),
+            ),
+            SizedBox(height: 20),
+            CustomButton(
+              text: "تسجيل دخول",
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  formKey.currentState!.save();
+                  context.read<SignInCubit>().signInWithEmailAndPassword(
+                    emailAddress: emailAddress,
+                    password: password,
+                  );
+                } else {
+                  setState(() {
+                    autovalidateMode = AutovalidateMode.always;
+                  });
+                }
+              },
+              backgroundColor: ColorsData.kLightPrimaryColor,
+            ),
+            SizedBox(height: 37),
+            SizedBox(
+              width: double.infinity,
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                          'يجب ان يكون لديك حساب مسؤول من قبل ادارة البرنامج اذا كنت ترغب في تسجيل حساب مسؤول ؟  ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w600,
+                        height: 2.46,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'تواصل معنا',
+                      style: TextStyle(
+                        color: const Color(0xFF1B5E37),
+                        fontSize: 13,
+                        fontFamily: 'Cairo',
+                        fontWeight: FontWeight.w600,
+                        height: 2.46,
+                      ),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.right,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
