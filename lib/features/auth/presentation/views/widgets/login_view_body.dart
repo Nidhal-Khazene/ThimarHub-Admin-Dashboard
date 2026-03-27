@@ -1,8 +1,8 @@
 import 'package:ecommerce_app_dashboard/core/utils/app_styles.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce_app_dashboard/features/auth/presentation/views/widgets/password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../../../core/utils/colors_data.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -39,17 +39,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               },
             ),
             SizedBox(height: 16),
-            CustomTextFormField(
+            PasswordField(
               onSaved: (value) {
                 password = value!;
               },
-              textInputType: TextInputType.text,
-              hintText: "كلمة المرور",
-              obscureText: ,
-              suffixIcon: Padding(
-                padding: EdgeInsets.only(left: 31),
-                child: Icon(Iconsax.eye),
-              ),
             ),
             SizedBox(height: 16),
             Text(
