@@ -29,6 +29,70 @@ class FetchOrdersCubit extends Cubit<FetchOrdersState> {
     });
   }
 
+  void fetchPendingOrders() {
+    emit(FetchOrdersLoading());
+    _streamSubscription = ordersRepo.fetchPendingOrders().listen((result) {
+      result.fold(
+        (failure) => emit(FetchOrdersFailure(errorMessage: failure.message)),
+        (orders) {
+          if (orders.isEmpty) {
+            emit(FetchOrdersEmpty());
+          } else {
+            emit(FetchOrdersSuccess(orders: orders));
+          }
+        },
+      );
+    });
+  }
+
+  void fetchAcceptedOrders() {
+    emit(FetchOrdersLoading());
+    _streamSubscription = ordersRepo.fetchAcceptedOrders().listen((result) {
+      result.fold(
+        (failure) => emit(FetchOrdersFailure(errorMessage: failure.message)),
+        (orders) {
+          if (orders.isEmpty) {
+            emit(FetchOrdersEmpty());
+          } else {
+            emit(FetchOrdersSuccess(orders: orders));
+          }
+        },
+      );
+    });
+  }
+
+  void fetchCancelledOrders() {
+    emit(FetchOrdersLoading());
+    _streamSubscription = ordersRepo.fetchCancelledOrders().listen((result) {
+      result.fold(
+        (failure) => emit(FetchOrdersFailure(errorMessage: failure.message)),
+        (orders) {
+          if (orders.isEmpty) {
+            emit(FetchOrdersEmpty());
+          } else {
+            emit(FetchOrdersSuccess(orders: orders));
+          }
+        },
+      );
+    });
+  }
+
+  void fetchDeliveredOrders() {
+    emit(FetchOrdersLoading());
+    _streamSubscription = ordersRepo.fetchDeliveredOrders().listen((result) {
+      result.fold(
+        (failure) => emit(FetchOrdersFailure(errorMessage: failure.message)),
+        (orders) {
+          if (orders.isEmpty) {
+            emit(FetchOrdersEmpty());
+          } else {
+            emit(FetchOrdersSuccess(orders: orders));
+          }
+        },
+      );
+    });
+  }
+
   @override
   Future<void> close() {
     _streamSubscription?.cancel();

@@ -4,8 +4,8 @@ import '../../../../../core/utils/colors_data.dart';
 import 'filter_section_item.dart';
 
 class FilterSection extends StatefulWidget {
-  const FilterSection({super.key});
-
+  const FilterSection({super.key, required this.statusChanged});
+  final ValueChanged<int> statusChanged;
   static final List<String> filterList = [
     "الكل",
     "نشط",
@@ -32,6 +32,7 @@ class _FilterSectionState extends State<FilterSection> {
             onTap: () {
               setState(() {
                 selectedIndex = index;
+                widget.statusChanged(selectedIndex);
               });
             },
             child: FilterSectionItem(
