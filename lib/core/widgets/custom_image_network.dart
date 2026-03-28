@@ -17,6 +17,7 @@ class CustomImageNetwork extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: urlImage,
+      cacheKey: urlImage,
       height: height ?? 105,
       width: width ?? 114,
       progressIndicatorBuilder: (context, url, downloadProgress) => Center(
