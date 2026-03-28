@@ -24,7 +24,7 @@ class OrdersRepoImpl extends OrdersRepo {
         yield Right(orders);
       }
     } catch (e) {
-      yield Left(ServerFailure(message: "Failed to fetch orders"));
+      yield Left(ServerFailure(message: "فشل تحميل على الطلبات!"));
     }
   }
 
@@ -41,7 +41,75 @@ class OrdersRepoImpl extends OrdersRepo {
       );
       return right(null);
     } catch (e) {
-      return left(ServerFailure(message: "حدث مشكل في تحديث حالة الطلب."));
+      return left(ServerFailure(message: "حدث مشكل في تحديث حالة الطلب!"));
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<OrderEntity>>> fetchAcceptedOrders() async* {
+    try {
+      await for (var data in databaseService.streamData(
+        path: BackendBreakPoint.getOrders,
+        query: {'where': 'status', 'isEqualTo': 'accepted'},
+      )) {
+        List<OrderEntity> orders = (data as List<dynamic>)
+            .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
+            .toList();
+        yield Right(orders);
+      }
+    } catch (e) {
+      yield Left(ServerFailure(message: "فشل تحميل الطلبات المقبولة!"));
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<OrderEntity>>> fetchCancelledOrders() async* {
+    try {
+      await for (var data in databaseService.streamData(
+        path: BackendBreakPoint.getOrders,
+        query: {'where': 'status', 'isEqualTo': 'cancelled'},
+      )) {
+        List<OrderEntity> orders = (data as List<dynamic>)
+            .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
+            .toList();
+        yield Right(orders);
+      }
+    } catch (e) {
+      yield Left(ServerFailure(message: "فشل تحميل الطلبات المرفوضة!"));
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<OrderEntity>>> fetchDeliveredOrders() async* {
+    try {
+      await for (var data in databaseService.streamData(
+        path: BackendBreakPoint.getOrders,
+        query: {'where': 'status', 'isEqualTo': 'delivered'},
+      )) {
+        List<OrderEntity> orders = (data as List<dynamic>)
+            .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
+            .toList();
+        yield Right(orders);
+      }
+    } catch (e) {
+      yield Left(ServerFailure(message: "فشل تحميل الطلبات المنجزة!"));
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<OrderEntity>>> fetchPendingOrders() async* {
+    try {
+      await for (var data in databaseService.streamData(
+        path: BackendBreakPoint.getOrders,
+        query: {'where': 'status', 'isEqualTo': 'pending'},
+      )) {
+        List<OrderEntity> orders = (data as List<dynamic>)
+            .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
+            .toList();
+        yield Right(orders);
+      }
+    } catch (e) {
+      yield Left(ServerFailure(message: "فشل تحميل الطلبات جارية المعالجة!"));
     }
   }
 }

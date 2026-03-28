@@ -5,6 +5,11 @@ import 'package:ecommerce_app_dashboard/features/orders/domain/entities/order_en
 
 abstract class OrdersRepo {
   Stream<Either<Failure, List<OrderEntity>>> fetchOrders();
+  Stream<Either<Failure, List<OrderEntity>>> fetchPendingOrders();
+  Stream<Either<Failure, List<OrderEntity>>> fetchAcceptedOrders();
+  Stream<Either<Failure, List<OrderEntity>>> fetchCancelledOrders();
+  Stream<Either<Failure, List<OrderEntity>>> fetchDeliveredOrders();
+
   Future<Either<Failure, void>> updateOrder({
     required OrderStatusEnum status,
     required String orderID,
