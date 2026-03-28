@@ -6,7 +6,13 @@ import 'filter_section_item.dart';
 class FilterSection extends StatefulWidget {
   const FilterSection({super.key});
 
-  static final List<String> filterList = ["الكل", "نشط", "مكتمل", "ملغي"];
+  static final List<String> filterList = [
+    "الكل",
+    "نشط",
+    "مكتمل",
+    "ملغي",
+    "مسلمة",
+  ];
 
   @override
   State<FilterSection> createState() => _FilterSectionState();

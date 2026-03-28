@@ -39,7 +39,7 @@ class FilterSectionItem extends StatelessWidget {
       child: Center(
         child: Text(
           textContent,
-          style: textStyle ?? AppStyles.medium15.copyWith(color: textColor),
+          style: textStyle ?? AppStyles.semiBold13.copyWith(color: textColor),
         ),
       ),
     );
