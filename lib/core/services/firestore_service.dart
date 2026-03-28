@@ -29,14 +29,17 @@ class FirestoreService extends DatabaseService {
     } else {
       Query<Map<String, dynamic>> data = firestore.collection(path);
       if (query != null) {
+        if (query['where'] != null) {
+          data = data.where(query['where'], isEqualTo: query['isEqualTo']);
+        }
         if (query['orderBy'] != null) {
           var orderByField = query['orderBy'];
-          var isDescending = query['descending'];
-          data.orderBy(orderByField, descending: isDescending);
+          var isDescending = query['descending'] ?? false;
+          data = data.orderBy(orderByField, descending: isDescending);
         }
         if (query['limit'] != null) {
           var limit = query['limit'];
-          data.limit(limit);
+          data = data.limit(limit);
         }
       }
       var result = await data.get();
@@ -60,21 +63,22 @@ class FirestoreService extends DatabaseService {
   }) async* {
     Query<Map<String, dynamic>> data = firestore.collection(path);
     if (query != null) {
+      if (query['where'] != null) {
+        data = data.where(query['where'], isEqualTo: query['isEqualTo']);
+      }
       if (query['orderBy'] != null) {
         var orderByField = query['orderBy'];
-        var isDescending = query['descending'];
-        data.orderBy(orderByField, descending: isDescending);
+        var isDescending = query['descending'] ?? false;
+        data = data.orderBy(orderByField, descending: isDescending);
       }
       if (query['limit'] != null) {
         var limit = query['limit'];
-        data.limit(limit);
+        data = data.limit(limit);
       }
     }
-    // var result = await data.get();
-    // return result.docs.map((e) => e.data()).toList();
     await for (var snapshot in data.snapshots()) {
-      var data = snapshot.docs.map((e) => e.data()).toList();
-      yield data;
+      var dataList = snapshot.docs.map((e) => e.data()).toList();
+      yield dataList;
     }
   }
 
