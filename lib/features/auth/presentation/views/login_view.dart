@@ -1,5 +1,4 @@
-import 'package:ecommerce_app_dashboard/constants.dart';
-import 'package:ecommerce_app_dashboard/core/helper/build_app_bar.dart';
+_app_bar.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
 import 'package:ecommerce_app_dashboard/features/auth/presentation/views/widgets/login_view_body_bloc_consumer.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +21,9 @@ class LoginView extends StatelessWidget {
         context: context,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: kPrimaryScreenPadding,
-          child: BlocProvider(
-            create: (context) => SignInCubit(authRepo: getIt<AuthRepo>()),
-            child: LoginViewBodyBlocConsumer(),
-          ),
+        child: BlocProvider(
+          create: (context) => SignInCubit(authRepo: getIt<AuthRepo>()),
+          child: LoginViewBodyBlocConsumer(),
         ),
       ),
     );
