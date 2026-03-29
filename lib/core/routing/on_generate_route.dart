@@ -30,6 +30,6 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
             EditProductInformationView(productEntity: product),
       );
     default:
-      return MaterialPageRoute(builder: (context) => const Scaffold());
+      return MaterialPageRoute(builder: (context) => const DashboardView());
   }
 }
