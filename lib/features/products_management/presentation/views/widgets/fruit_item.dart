@@ -1,5 +1,5 @@
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_product_information_view.dart';
-import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/remove_product_bloc_consumer.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/remove_product_Icon_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_styles.dart';
@@ -84,7 +84,7 @@ class _FruitItemState extends State<FruitItem> {
           Positioned(
             bottom: 30,
             left: 0,
-            child: RemoveProductBlocConsumer(widget: widget),
+            child: RemoveProductIconBlocConsumer(widget: widget),
           ),
         ],
       ),

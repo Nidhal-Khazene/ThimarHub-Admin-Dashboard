@@ -8,6 +8,7 @@ import 'package:ecommerce_app_dashboard/features/products_management/presentatio
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../manager/cubits/remove_product_cubit/remove_product_cubit.dart';
 import 'edit_product_information_view_bloc_builder.dart';
 
 class EditProductInformationView extends StatelessWidget {
@@ -33,11 +34,21 @@ class EditProductInformationView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: kPrimaryScreenPadding,
-          child: BlocProvider(
-            create: (context) => UpdateProductCubit(
-              imagesRepo: getIt<ImagesRepo>(),
-              productRepo: getIt<ProductsRepo>(),
-            ),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => UpdateProductCubit(
+                  imagesRepo: getIt<ImagesRepo>(),
+                  productRepo: getIt<ProductsRepo>(),
+                ),
+              ),
+              BlocProvider(
+                create: (context) => RemoveProductCubit(
+                  imagesRepo: getIt<ImagesRepo>(),
+                  productsRepo: getIt<ProductsRepo>(),
+                ),
+              ),
+            ],
             child: EditProductViewBlocBuilder(productEntity: productEntity),
           ),
         ),

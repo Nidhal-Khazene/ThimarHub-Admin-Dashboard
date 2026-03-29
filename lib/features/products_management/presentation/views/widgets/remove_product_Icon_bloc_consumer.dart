@@ -8,8 +8,8 @@ import '../../../../../core/utils/colors_data.dart';
 import '../../manager/cubits/remove_product_cubit/remove_product_cubit.dart';
 import 'fruit_item.dart';
 
-class RemoveProductBlocConsumer extends StatelessWidget {
-  const RemoveProductBlocConsumer({super.key, required this.widget});
+class RemoveProductIconBlocConsumer extends StatelessWidget {
+  const RemoveProductIconBlocConsumer({super.key, required this.widget});
 
   final FruitItem widget;
 

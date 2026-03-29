@@ -6,6 +6,7 @@ import 'package:ecommerce_app_dashboard/core/widgets/custom_button.dart';
 import 'package:ecommerce_app_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/domain/entities/product_entity.dart';
 import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/edit_image_section.dart';
+import 'package:ecommerce_app_dashboard/features/products_management/presentation/views/widgets/remove_product_button_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -208,6 +209,9 @@ class _EditProductInformationViewBodyState
                 color: ColorsData.kPrimaryColor,
               ),
             ),
+            SizedBox(height: 16),
+            RemoveProductButtonBlocConsumer(widget: widget),
+            SizedBox(height: 16),
           ],
         ),
       ),
