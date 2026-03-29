@@ -1,4 +1,3 @@
-import 'package:ecommerce_app_dashboard/constants.dart';
 import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/widgets/dashboard_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +16,7 @@ class DashboardView extends StatelessWidget {
         context: context,
         leadingWidgetVisibility: false,
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: kPrimaryScreenPadding,
-          child: DashboardViewBody(),
-        ),
-      ),
+      body: SafeArea(child: DashboardViewBody()),
     );
   }
 }

@@ -1,4 +1,6 @@
+import 'package:ecommerce_app_dashboard/constants.dart';
 import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/widgets/dashboard_item.dart';
+import 'package:ecommerce_app_dashboard/features/dashboard/presentation/views/widgets/log_out_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/assets.dart';
@@ -13,40 +15,52 @@ class DashboardViewBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 74),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, ProductsManagementView.routeName);
-            },
-            child: DashboardItem(
-              textContent: "ادارة  الاصناف والمنتجات ",
-              iconImage: Assets.imagesDashboardOpenCardboardBox,
-              iconImagePadding: 10,
+          Padding(
+            padding: kPrimaryScreenPadding,
+            child: Column(
+              children: [
+                SizedBox(height: 74),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      ProductsManagementView.routeName,
+                    );
+                  },
+                  child: DashboardItem(
+                    textContent: "ادارة  الاصناف والمنتجات ",
+                    iconImage: Assets.imagesDashboardOpenCardboardBox,
+                    iconImagePadding: 10,
+                  ),
+                ),
+                SizedBox(height: 24),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, OrdersView.routeName);
+                  },
+                  child: DashboardItem(
+                    textContent: "خدمة العملاء والطلبات ",
+                    iconImage: Assets.imagesDashboardChecked,
+                    iconImagePadding: 18,
+                  ),
+                ),
+                SizedBox(height: 24),
+                DashboardItem(
+                  textContent: "ادارة الشحن والتفريغ ",
+                  iconImage: Assets.imagesDashboardShippingCar,
+                  iconImagePadding: 8,
+                ),
+                SizedBox(height: 24),
+                DashboardItem(
+                  textContent: "ادراة المخازن والمنتجات ",
+                  iconImage: Assets.imagesDashboardShippingChart,
+                  iconImagePadding: 16,
+                ),
+              ],
             ),
           ),
-          SizedBox(height: 24),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, OrdersView.routeName);
-            },
-            child: DashboardItem(
-              textContent: "خدمة العملاء والطلبات ",
-              iconImage: Assets.imagesDashboardChecked,
-              iconImagePadding: 18,
-            ),
-          ),
-          SizedBox(height: 24),
-          DashboardItem(
-            textContent: "ادارة الشحن والتفريغ ",
-            iconImage: Assets.imagesDashboardShippingCar,
-            iconImagePadding: 8,
-          ),
-          SizedBox(height: 24),
-          DashboardItem(
-            textContent: "ادراة المخازن والمنتجات ",
-            iconImage: Assets.imagesDashboardShippingChart,
-            iconImagePadding: 16,
-          ),
+          SizedBox(height: 128),
+          LogOutButton(),
         ],
       ),
     );
