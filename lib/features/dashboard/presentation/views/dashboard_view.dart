@@ -12,7 +12,11 @@ class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "لوحة التحكم", context: context),
+      appBar: buildAppBar(
+        title: "لوحة التحكم",
+        context: context,
+        leadingWidgetVisibility: false,
+      ),
       body: SafeArea(
         child: Padding(
           padding: kPrimaryScreenPadding,

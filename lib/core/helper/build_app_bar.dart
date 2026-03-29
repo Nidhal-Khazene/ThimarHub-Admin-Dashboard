@@ -9,24 +9,31 @@ AppBar buildAppBar({
   Widget? leading,
   Color? backgroundColor,
   Color? textColor,
+  bool? leadingWidgetVisibility,
 }) {
   return AppBar(
     toolbarHeight: 100,
-    leading:
-        leading ??
-        (Navigator.canPop(context)
-            ? GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Padding(
-                  padding: EdgeInsets.only(right: 16),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 20,
-                    color: Colors.white,
+    leading: Visibility(
+      visible: leadingWidgetVisibility ?? true,
+      child:
+          leading ??
+          (Navigator.canPop(context)
+              ? Visibility(
+                  visible: leadingWidgetVisibility ?? true,
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 16),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ),
-              )
-            : SizedBox()),
+                )
+              : SizedBox()),
+    ),
     title: Text(title),
     centerTitle: true,
     backgroundColor: backgroundColor ?? ColorsData.kLightPrimaryColor,
