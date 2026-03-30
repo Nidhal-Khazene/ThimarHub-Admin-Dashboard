@@ -1,4 +1,6 @@
+import 'package:ecommerce_app_dashboard/core/helper/show_false_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/core/helper/show_snack_bar.dart';
+import 'package:ecommerce_app_dashboard/core/helper/show_true_snack_bar.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/manager/cubits/update_orders_cubit/cubit/update_order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,10 +14,10 @@ class UpdateOrderBlocBuilder extends StatelessWidget {
     return BlocConsumer<UpdateOrderCubit, UpdateOrderState>(
       listener: (context, state) {
         if (state is UpdateOrderFailure) {
-          showSnackBar(context, state.errMessage);
+          showFalseSnackBar(context, errorMessage: state.errMessage);
         }
         if (state is UpdateOrderSuccess) {
-          showSnackBar(context, "نجاح عملية تحديث حالة الطلب");
+          showTrueSnackBar(context, message: "نجاح تحديث حالة الطلب");
         }
       },
       builder: (context, state) {
