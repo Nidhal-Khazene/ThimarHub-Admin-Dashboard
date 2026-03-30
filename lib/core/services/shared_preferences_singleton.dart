@@ -22,4 +22,16 @@ class SharedPreferencesSingleton {
   static String? getString(String key) {
     return _instance.getString(key);
   }
+
+  static Future<bool> remove(String key) async {
+    return await _instance.remove(key);
+  }
+
+  static Future<bool> clear() async {
+    return await _instance.clear();
+  }
+
+  static bool containsKey(String key) {
+    return _instance.containsKey(key);
+  }
 }

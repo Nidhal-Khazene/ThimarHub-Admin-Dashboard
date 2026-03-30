@@ -1,3 +1,7 @@
+import 'package:ecommerce_app_dashboard/core/helper/show_true_snack_bar.dart';
+import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
+import 'package:ecommerce_app_dashboard/features/auth/domain/repos/auth_repo.dart';
+import 'package:ecommerce_app_dashboard/features/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -10,7 +14,17 @@ class LogOutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () async {
+        await getIt<AuthRepo>().signOut();
+        if (context.mounted) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            LoginView.routeName,
+            (route) => false,
+          );
+          showTrueSnackBar(context, message: "تم تسجيل الخروج");
+        }
+      },
       child: Container(
         width: double.infinity,
         height: 41,
