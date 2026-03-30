@@ -6,6 +6,8 @@
 
 ThimarHub-Admin-Dashboard is a sophisticated and high-performance administrative solution built with Flutter, designed to provide seamless management for modern e-commerce ecosystems. Serving as the vital backend companion to mobile applications, this dashboard offers a centralized platform for overseeing business operations with precision. It features a robust authentication system for secure data access and leverages comprehensive testing frameworks to ensure long-term stability and reliability. With its intuitive design and cross-platform capabilities, ThimarHub-Admin-Dashboard empowers administrators to efficiently manage workflows, enhance productivity, and maintain full control over their digital marketplace.
 
+![preview](assets/previews/thimar_hub_dashboard_preview.png)
+
 ## Screenshots
 
 | Login Screen | Dashboard Screen | Products Screen |
@@ -189,8 +191,8 @@ get_it: ^9.2.0
 │   │   │       │       │   └── fetch_orders_state.dart
 │   │   │       │       └── update_orders_cubit
 │   │   │       │           └── cubit
-│   │   │       │               ├── update_order_cubit.dart
-│   │   │       │               └── update_order_state.dart
+│   │   │               ├── update_order_cubit.dart
+│   │   │               └── update_order_state.dart
 │   │   │       └── views
 │   │   │           ├── orders_view.dart
 │   │   │           └── widgets
@@ -284,4 +286,3 @@ Contributions are welcome! Here's how you can help:
 6. **Open** a pull request
 
 Please ensure your code follows the project's style guidelines and includes tests where applicable.
-
