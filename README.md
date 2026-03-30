@@ -8,7 +8,7 @@ ThimarHub-Admin-Dashboard is a sophisticated and high-performance administrative
 
 ![preview](assets/previews/thimar_hub_dashboard_preview.png)
 
-![video](assets/previews/thimar_hub_dashboard_preview_video.mp4)
+[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=ssI5igt9Mt0)
 
 ## Screenshots
 
