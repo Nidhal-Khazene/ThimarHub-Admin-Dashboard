@@ -3,6 +3,7 @@ import 'package:ecommerce_app_dashboard/core/helper/build_app_bar.dart';
 import 'package:ecommerce_app_dashboard/core/services/get_it_service.dart';
 import 'package:ecommerce_app_dashboard/core/utils/colors_data.dart';
 import 'package:ecommerce_app_dashboard/features/orders/domain/repos/orders_repo.dart';
+import 'package:ecommerce_app_dashboard/features/orders/presentation/manager/cubits/delete_orders_cubit/delete_orders_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/manager/cubits/fetch_orders_cubit/fetch_orders_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/manager/cubits/update_orders_cubit/cubit/update_order_cubit.dart';
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/orders_view_body.dart';
@@ -35,6 +36,10 @@ class OrdersView extends StatelessWidget {
               BlocProvider(
                 create: (context) =>
                     UpdateOrderCubit(ordersRepo: getIt<OrdersRepo>()),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    DeleteOrdersCubit(ordersRepo: getIt<OrdersRepo>()),
               ),
             ],
             child: OrdersViewBody(),

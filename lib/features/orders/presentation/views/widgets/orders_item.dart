@@ -5,6 +5,8 @@ import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widge
 import 'package:ecommerce_app_dashboard/features/orders/presentation/views/widgets/product_order_item.dart';
 import 'package:flutter/material.dart';
 
+import 'delete_order_bloc_consumer.dart';
+
 class OrdersItem extends StatelessWidget {
   const OrdersItem({super.key, required this.orderEntity});
 
@@ -28,6 +30,8 @@ class OrdersItem extends StatelessWidget {
               Text("المبلغ الاجمالي: ", style: AppStyles.bold16),
               SizedBox(width: 4),
               Text("دج${orderEntity.totalPrice}", style: AppStyles.semiBold13),
+              Spacer(),
+              DeleteOrderIconBlocConsumer(orderEntity: orderEntity),
             ],
           ),
           SizedBox(height: 16),

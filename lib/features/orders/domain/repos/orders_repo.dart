@@ -14,4 +14,5 @@ abstract class OrdersRepo {
     required OrderStatusEnum status,
     required String orderID,
   });
+  Future<Either<Failure, void>> deleteOrder({required String orderID});
 }

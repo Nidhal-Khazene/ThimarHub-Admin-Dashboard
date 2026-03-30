@@ -112,4 +112,17 @@ class OrdersRepoImpl extends OrdersRepo {
       yield Left(ServerFailure(message: "فشل تحميل الطلبات جارية المعالجة!"));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteOrder({required String orderID}) async {
+    try {
+      await databaseService.deleteData(
+        path: BackendBreakPoint.deleteOrders,
+        documentId: orderID,
+      );
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(message: "فشل حذف الطلب"));
+    }
+  }
 }
